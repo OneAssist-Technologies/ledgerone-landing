@@ -1,0 +1,56 @@
+{
+  "gstin": "33AAAAA0000A1Z5",
+  "fp": "082026",
+  "data": {
+    "b2b": [
+      {
+        "ctin": "27DDDDD4444D1Z5",
+        "trdNm": "National Tech Hardware Supplies (Mumbai)",
+        "inv": [
+          {
+            "inum": "BILL-MUM-8890",
+            "idt": "28-08-2026",
+            "val": 177000,
+            "pos": "33",
+            "inv_typ": "R",
+            "itcavl": "Y",
+            "items": [
+              {
+                "num": 1,
+                "txval": 150000,
+                "rt": 18,
+                "iamt": 27000,
+                "camt": 0,
+                "samt": 0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ctin": "33EEEEE5555E1Z6",
+        "trdNm": "Chennai Packaging Materials Pvt Ltd",
+        "inv": [
+          {
+            "inum": "BILL-CHN-4412",
+            "idt": "28-08-2026",
+            "val": 59000,
+            "pos": "33",
+            "inv_typ": "R",
+            "itcavl": "Y",
+            "items": [
+              {
+                "num": 1,
+                "txval": 50000,
+                "rt": 18,
+                "iamt": 0,
+                "camt": 4500,
+                "samt": 4500
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

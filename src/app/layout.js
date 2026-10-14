@@ -1,0 +1,110 @@
+import './landing.css';
+
+export const metadata = {
+  metadataBase: new URL('https://oneassist.net.in'),
+  title: 'LedgerOne | Billing, Inventory & Business Management Software',
+  description:
+    'Manage retail counter billing, wholesale quotations and invoices, purchases, inventory tracking, customer collections, and GST reporting with LedgerOne by OneAssist Technologies.',
+  keywords: [
+    'LedgerOne',
+    'billing software',
+    'inventory management',
+    'quotation maker',
+    'invoice generator',
+    'GST billing software India',
+    'retail billing POS',
+    'business accounting software',
+    'wholesale invoicing',
+    'OneAssist Technologies',
+  ],
+  authors: [{ name: 'OneAssist Technologies', url: 'https://oneassist.net.in' }],
+  creator: 'OneAssist Technologies',
+  publisher: 'OneAssist Technologies',
+  alternates: {
+    canonical: '/ledgerone',
+  },
+  openGraph: {
+    title: 'LedgerOne | Billing, Inventory & Business Management Software',
+    description:
+      'Simplify your business finances with LedgerOne: fast counter billing, connected stock, quotations and GST-compliant invoices.',
+    url: 'https://oneassist.net.in/ledgerone',
+    siteName: 'LedgerOne',
+    locale: 'en_IN',
+    type: 'website',
+    images: [
+      {
+        url: '/ledgerone.png',
+        width: 1200,
+        height: 630,
+        alt: 'LedgerOne Business Workspace',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'LedgerOne | Billing, Inventory & Business Management Software',
+    description:
+      'Manage retail billing, quotations, invoices, purchases & inventory in one organized workspace.',
+    images: ['/ledgerone.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  icons: {
+    icon: '/favicon.svg',
+    shortcut: '/favicon.svg',
+    apple: '/favicon.svg',
+  },
+};
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  name: 'LedgerOne',
+  operatingSystem: 'All Modern Browsers, Windows, Android, iOS',
+  applicationCategory: 'BusinessApplication',
+  description:
+    'Integrated business billing, inventory, quotation maker, invoice generator and GST management software by OneAssist Technologies.',
+  url: 'https://oneassist.net.in/ledgerone',
+  offers: {
+    '@type': 'Offer',
+    price: '0',
+    priceCurrency: 'INR',
+    description: 'Free business tools and scalable subscription plans',
+  },
+  creator: {
+    '@type': 'Organization',
+    name: 'OneAssist Technologies',
+    url: 'https://oneassist.net.in',
+  },
+  featureList: [
+    'Instant Quotation Maker',
+    'Free Invoice Generator',
+    'Retail Counter POS Billing',
+    'Connected Stock & Inventory Tracking',
+    'GST Return Reports',
+    'Customer Collections & Vendor Payments',
+  ],
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
