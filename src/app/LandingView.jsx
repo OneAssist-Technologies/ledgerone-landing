@@ -723,10 +723,10 @@ export default function LandingView() {
             ))}
           </nav>
           <section>
-            <a href="/ledgerone/app/login" className="btn outline" style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}>
+            <a href="/ledgerone/login" className="btn outline" style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}>
               Login
             </a>
-            <Btn href="/ledgerone/app/signup">
+            <Btn href="/ledgerone/register">
               Get Started Free <Icon name="arrow" size={17} />
             </Btn>
           </section>
@@ -762,7 +762,7 @@ export default function LandingView() {
                 customer collections in one organised workspace.
               </p>
               <div className="actions">
-                <Btn href="/ledgerone/app/signup">
+                <Btn href="/ledgerone/register">
                   Get Started Free <Icon name="arrow" size={18} />
                 </Btn>
                 <Btn href="#demo" kind="outline">
@@ -1358,16 +1358,16 @@ export default function LandingView() {
             <button onClick={() => setBuilder('Quotation')} type="button">
               Quotation Maker (Preview)
             </button>
-            <a href="/ledgerone/app/tools/quotation-maker">Quotation Maker (Online)</a>
+            <a href="/ledgerone/tools/quotation-maker">Quotation Maker (Online)</a>
             <button onClick={() => setBuilder('Invoice')} type="button">
               Invoice Generator (Preview)
             </button>
-            <a href="/ledgerone/app/tools/invoice-generator">Invoice Generator (Online)</a>
+            <a href="/ledgerone/tools/invoice-generator">Invoice Generator (Online)</a>
           </section>
           <section>
             <b>Account &amp; Access</b>
-            <a href="/ledgerone/app/login">Login to Account</a>
-            <a href="/ledgerone/app/signup">Register Free</a>
+            <a href="/ledgerone/login">Login to Account</a>
+            <a href="/ledgerone/register">Register Free</a>
             <a href="#demo">Request a Demo</a>
             <a href="https://oneassist.net.in/contact">Contact Support</a>
           </section>
