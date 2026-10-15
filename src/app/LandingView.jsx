@@ -126,6 +126,44 @@ const iconPaths = {
       <path d="M14 10h7v5h-7a2.5 2.5 0 0 1 0-5Z" />
     </>
   ),
+  scale: (
+    <>
+      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
+      <path d="M7 21h10" />
+      <path d="M12 3v18" />
+      <path d="M3 7h18" />
+    </>
+  ),
+  landmark: (
+    <>
+      <line x1="3" y1="22" x2="21" y2="22" />
+      <line x1="6" y1="18" x2="6" y2="11" />
+      <line x1="10" y1="18" x2="10" y2="11" />
+      <line x1="14" y1="18" x2="14" y2="11" />
+      <line x1="18" y1="18" x2="18" y2="11" />
+      <polygon points="12 2 20 7 4 7" />
+    </>
+  ),
+  creditcard: (
+    <>
+      <rect width="20" height="14" x="2" y="5" rx="2" />
+      <line x1="2" x2="22" y1="10" y2="10" />
+    </>
+  ),
+  upload: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="17 8 12 3 7 8" />
+      <line x1="12" x2="12" y1="3" y2="15" />
+    </>
+  ),
+  tag: (
+    <>
+      <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z" />
+      <circle cx="7" cy="7" r="1.5" />
+    </>
+  ),
 };
 
 function Icon({ name, size = 20 }) {
@@ -184,89 +222,193 @@ function Title({ eyebrow, title, text }) {
 const features = {
   'Sales & Billing': [
     [
-      'Retail Sales & Billing',
-      'A dedicated counter-sales flow for product selection, payment and supported receipt output.',
+      'Retail POS Counter Billing',
+      'High-speed counter sales interface with barcode scanner support, split payment modes (Cash, UPI, Card), and thermal receipt printing.',
       'store',
     ],
     [
-      'Wholesale Invoicing',
-      'Prepare customer invoices with item, pricing and applicable tax details.',
+      'B2B GST Tax Invoicing',
+      'Generate compliant tax invoices with itemized HSN/SAC codes, auto CGST/SGST/IGST calculations, and customizable terms.',
       'receipt',
     ],
     [
-      'Quotation Management',
-      'Build itemised quotations with clear commercial information.',
+      'Quotation & Estimation',
+      'Build commercial quotations and estimates with one-click conversion into finalized sales invoices.',
       'document',
     ],
     [
-      'Customer Collections',
-      'Review eligible invoice collections separately from counter payments.',
+      'Customer Credit & Collections',
+      'Set customer credit limits, monitor overdue receivables, and record partial or full inward payment receipts.',
       'wallet',
     ],
-  ],
-  'Products & Stock': [
     [
-      'Product Management',
-      'Organise items, categories, pricing and available attributes.',
-      'box',
+      'Promotional Discounts & Offers',
+      'Configure percentage and flat promotional discounts, seasonal coupon codes, and item-level price rules.',
+      'tag',
     ],
     [
-      'Inventory Tracking',
-      'Follow stock movement created by supported business transactions.',
-      'layers',
-    ],
-    [
-      'Sales & Purchase Returns',
-      'Record returns through their appropriate stock workflows.',
-      'refresh',
-    ],
-    [
-      'Inventory Reports',
-      'Review available summaries and product movement reports.',
-      'chart',
+      'Customer Directory & Ledgers',
+      'Maintain comprehensive client profiles, GSTIN validation, and chronological transaction balance ledgers.',
+      'users',
     ],
   ],
-  'Purchasing & Vendors': [
+  'Purchases & Vendors': [
     [
-      'Purchase Management',
-      'Record purchases and connect incoming items to stock movement.',
+      'Purchase Orders & Inward Bills',
+      'Record inward supplier bills, automatically update stock quantities, and log supplier invoice reference numbers.',
       'bag',
     ],
     [
-      'Vendor Records',
-      'Keep vendor information and transaction history together.',
-      'users',
+      'Vendor Directory & GSTIN',
+      'Maintain vendor contact information, GSTIN details, credit periods, and chronological purchase histories.',
+      'building',
     ],
     [
-      'Vendor Payments',
-      'Review purchase-related payments as a distinct business flow.',
+      'Vendor Payment Vouchers',
+      'Record outward payments to suppliers against pending purchase bills with multi-account debit tracking.',
       'wallet',
     ],
     [
-      'Purchase Reports',
-      'Understand purchasing activity with operational reports.',
-      'report',
+      'Debit Notes & Purchase Returns',
+      'Process supplier returns and debit notes with automatic inventory deductions and vendor ledger adjustments.',
+      'refresh',
     ],
-  ],
-  'Reports & Admin': [
     [
-      'Dashboard Summaries',
-      'See supported business indicators in one operational view.',
+      'Procurement Cost Analytics',
+      'Analyze historical purchase costs and supplier price variations to optimize procurement spending.',
       'chart',
     ],
     [
-      'Business Reports',
-      'Review available reports across key transactions.',
-      'report',
+      'Bulk Inward Stock Receipt',
+      'Rapidly add incoming inventory using barcode scanning and bulk line-item entry.',
+      'upload',
+    ],
+  ],
+  'Inventory & Stock': [
+    [
+      'Product Master & Catalog',
+      'Organize products with SKU, barcodes, HSN/SAC codes, categories, brands, and multi-tier pricing.',
+      'box',
     ],
     [
-      'Roles & Permissions',
-      'Configure access according to supported business roles.',
+      'Real-Time Stock Movement Ledger',
+      'Track every unit in real time through inward purchases, counter sales, returns, and manual adjustments.',
+      'layers',
+    ],
+    [
+      'Low Stock & Reorder Alerts',
+      'Proactive alerts when product quantities fall below safety thresholds to prevent stockouts.',
+      'eye',
+    ],
+    [
+      'Stock Audits & Adjustments',
+      'Perform periodic physical inventory counts, record damaged or expired goods, and balance stock with audit notes.',
+      'refresh',
+    ],
+    [
+      'Barcode & QR Label Generator',
+      'Generate and print custom barcode and QR labels directly for items and packaging shelves.',
+      'tag',
+    ],
+    [
+      'Multi-Unit of Measurement (UoM)',
+      'Support diverse units (Pieces, Kg, Liters, Boxes, Bundles) with automated conversion factors.',
+      'scale',
+    ],
+  ],
+  'GST & Statutory Compliance': [
+    [
+      'GSTR-1 Outward Supplies',
+      'Auto-generate GSTR-1 summaries classified by B2B, B2CL, B2CS, credit notes, and nil-rated supplies.',
+      'scale',
+    ],
+    [
+      'GSTR-2B Auto-Reconciliation',
+      'Import government GSTR-2B JSON to instantly reconcile vendor ITC claims against purchase books.',
+      'document',
+    ],
+    [
+      'GSTR-3B Summary Computations',
+      'Auto-compute eligible input tax credit, outward tax liability, and net tax payable with zero manual formulas.',
+      'chart',
+    ],
+    [
+      'Government E-Way Bills',
+      'Directly generate and manage Part-A & Part-B E-Way Bills with transporter IDs, vehicle numbers, and distance calculation.',
+      'truck',
+    ],
+    [
+      'IRP E-Invoicing & IRN',
+      'Comply with B2B e-invoicing mandates featuring instant IRN generation and digitally signed QR code stamping.',
+      'file',
+    ],
+    [
+      'Configurable Tax Rates Engine',
+      'Automated handling of 0%, 5%, 12%, 18%, 28% GST, cess, exemptions, and intra-state vs inter-state tax splits.',
+      'shield',
+    ],
+  ],
+  'Finance & Banking': [
+    [
+      'Multi-Bank & Cash Accounts',
+      'Manage multiple bank current accounts, savings, and cash counter registers with real-time balance tracking.',
+      'landmark',
+    ],
+    [
+      'Bank Reconciliation (BRS)',
+      'Upload bank statements in Excel, CSV, or PDF to match transactions against internal payment vouchers.',
+      'upload',
+    ],
+    [
+      'Operating Expense Vouchers',
+      'Categorize business overheads including rent, utility bills, employee salaries, and freight logistics.',
+      'wallet',
+    ],
+    [
+      'Real-Time Balance Sheet',
+      'Generate live Balance Sheets reflecting current assets, liabilities, and owner equity dynamically.',
+      'scale',
+    ],
+    [
+      'Profit & Loss Statement',
+      'Inspect real-time gross margin and net profitability across any custom date range or fiscal quarter.',
+      'chart',
+    ],
+    [
+      'Contra Fund Transfers',
+      'Transfer funds seamlessly between cash registers and bank accounts with synchronized double-entry logging.',
+      'refresh',
+    ],
+  ],
+  'Analytics & Administration': [
+    [
+      'Executive Business Dashboard',
+      'Gain instant clarity on daily revenue, gross margins, cash position, receivables, and payables at a glance.',
+      'chart',
+    ],
+    [
+      'Granular Role-Based Access (RBAC)',
+      'Control employee access with pre-configured roles for Admins, Store Managers, Accountants, and Cashiers.',
       'shield',
     ],
     [
-      'Company Settings',
-      'Manage available company and document configuration.',
+      'Party Aging Analysis',
+      'Identify overdue customer receivables categorized into 0-30, 31-60, and 60+ day aging intervals.',
+      'eye',
+    ],
+    [
+      'Bulk Data Import (Excel/CSV)',
+      'Migrate existing items, customers, suppliers, and opening balances in seconds via CSV/Excel templates.',
+      'upload',
+    ],
+    [
+      'Thermal & A4 Invoice Customizer',
+      'Switch between 2-inch/3-inch thermal POS receipt layouts and branded A4/A5 tax invoices with custom logos.',
+      'receipt',
+    ],
+    [
+      'Company Profile & Audit Trail',
+      'Configure multi-branch company details, currency symbols, invoice numbering prefixes, and security logs.',
       'building',
     ],
   ],
@@ -275,76 +417,178 @@ const features = {
 const previews = {
   Dashboard: [
     'A clear view of your business day',
-    'Bring operational shortcuts, recent activity, stock visibility and outstanding records into one clean workspace.',
+    'Bring operational shortcuts, revenue metrics, stock visibility, receivables, and cash flow into one clean workspace.',
     'dashboard',
   ],
   'Retail Billing': [
     'Fast, focused counter billing',
-    'Select products, review quantities, record a retail payment and prepare a supported receipt.',
+    'Select products, scan barcodes, split payment modes (Cash/UPI/Card), and generate instant thermal POS receipts.',
     'billing',
   ],
   'Quotations & Invoices': [
-    'Professional documents, organised',
-    'Prepare detailed customer documents with item, pricing, tax and commercial information.',
+    'Professional GST documents',
+    'Prepare detailed customer documents with itemized HSN codes, multi-tax breakdowns, and one-click conversion.',
     'invoice',
   ],
-  'Inventory & Purchasing': [
-    'Purchasing connected to stock',
-    'Record vendor purchases, follow incoming stock movement and review inventory.',
+  'Inventory & Stock': [
+    'Live stock ledger & reorder alerts',
+    'Track item movement across inward purchases, counter sales, barcode labels, and physical stock adjustments.',
     'inventory',
   ],
-  'Collections & Reports': [
-    'Follow eligible outstanding balances',
-    'Keep wholesale invoice collections distinct from counter sales and vendor payments.',
-    'reports',
+  'GST & Compliance': [
+    'GSTR-1, 2B matching & E-Way Bills',
+    'Automated tax engine, GSTR-2B JSON reconciliation, government E-Way bills, and IRP E-Invoicing with QR codes.',
+    'gst',
+  ],
+  'Banking & Balance Sheet': [
+    'Multi-bank BRS & financial statements',
+    'Reconcile bank statements, track petty cash, log operational overheads, and inspect real-time Balance Sheets.',
+    'banking',
   ],
 };
 
 const faqs = [
   [
     'What is LedgerOne?',
-    'LedgerOne is a business billing, inventory and operations platform by OneAssist Technologies. It connects supported sales, purchasing, stock, customer, vendor and reporting workflows.',
+    'LedgerOne is a comprehensive business billing, inventory, and operations ERP platform by OneAssist Technologies. It connects retail POS billing, wholesale invoicing, purchases, real-time inventory, GST compliance, multi-bank reconciliation, and financial reporting in a single unified workspace.',
   ],
   [
-    'Who can use LedgerOne?',
-    'It is positioned for retail shops, wholesalers, distributors and growing businesses that need clearer day-to-day operational records.',
+    'Who is LedgerOne designed for?',
+    'LedgerOne is built for retail shops, wholesale traders, distributors, manufacturers, and growing GST-registered enterprises that need structured daily operations without the complexity of legacy accounting software.',
   ],
   [
-    'How does retail billing differ from wholesale invoicing?',
-    'Retail billing supports counter transactions and immediate payment flows. Wholesale workflows use customer quotations and invoices, with collections reviewed separately.',
+    'How does retail POS billing differ from wholesale invoicing?',
+    'Retail POS billing is tailored for fast counter sales with barcode scanner support, split tenders (Cash, UPI, Card), and instant thermal receipt printing. Wholesale invoicing handles B2B transactions with customer quotations, HSN/SAC codes, multi-tax breakdowns, payment terms, and partial collection tracking.',
   ],
   [
-    'Can I create quotations and invoices?',
-    'Yes. LedgerOne supports quotation and invoice document workflows. The builder here is a client-side preview and does not post to a company workspace.',
+    'Does LedgerOne support GST compliance, E-Way Bills, and E-Invoicing?',
+    'Yes. LedgerOne features a built-in multi-tier GST engine (0%, 5%, 12%, 18%, 28%), automatic GSTR-1 and GSTR-3B summaries, government GSTR-2B JSON auto-reconciliation, direct E-Way Bill generation (Part-A/B), and IRP e-invoicing with digitally signed QR codes.',
   ],
   [
-    'How do purchases relate to inventory?',
-    'Supported purchase transactions create stock movement, helping teams review incoming products and inventory through a connected process.',
+    'How does inventory tracking stay synchronized with sales and purchases?',
+    'Every inward purchase automatically increases item stock and logs supplier invoice details. Counter sales and tax invoices deduct stock in real time. LedgerOne also provides low-stock reorder alerts, physical inventory adjustment audits, and custom barcode label generation.',
   ],
   [
-    'What tax capabilities are supported?',
-    'Configured tax breakdowns may be displayed. Tax display is not the same as statutory filing or government-portal integration.',
+    'Can I reconcile multiple bank accounts and upload bank statements?',
+    'Yes. LedgerOne supports multi-bank accounts and cash registers. You can upload bank statements in Excel, CSV, or PDF to perform Bank Reconciliation (BRS), match vouchers, track operating expenses, and view an automated Balance Sheet and Profit & Loss statement.',
   ],
   [
-    'Can multiple staff members use the system?',
-    'Published product information includes role-based access. Exact roles and provisioning should be confirmed during a product demonstration.',
+    'Can I import existing data from Excel, CSV, or another software?',
+    'Yes. LedgerOne includes built-in bulk data import tools allowing you to import your entire product catalog, customer directory, vendor profiles, and opening stock balances in seconds using standard spreadsheets.',
+  ],
+  [
+    'Can multiple team members use LedgerOne with custom roles?',
+    'Yes. LedgerOne features granular Role-Based Access Control (RBAC). You can assign distinct permissions for Cashiers (counter billing only), Store Managers (inventory & purchases), Accountants (banking & GST), and Administrators (full access).',
+  ],
+  [
+    'Can I try creating quotations and invoices without logging in?',
+    'Yes! LedgerOne provides interactive in-browser Quotation Maker and Invoice Generator tools right on this landing page. You can customize items, pricing, and taxes, and preview or print them immediately.',
   ],
   [
     'Is a mobile application available?',
-    'LedgerOne has a mobile experience for supported tasks. Availability by module may vary, so confirm current capability with the product team.',
+    'Yes. LedgerOne includes a dedicated mobile experience for checking sales, monitoring live stock levels, and viewing business summaries on the go.',
   ],
 ];
 
 function Mock({ type = 'dashboard' }) {
+  const activeIconIndex =
+    type === 'inventory'
+      ? 2
+      : type === 'invoice' || type === 'billing'
+      ? 1
+      : type === 'gst'
+      ? 4
+      : type === 'banking'
+      ? 5
+      : 0;
+
+  const headerTitle =
+    type === 'billing'
+      ? 'Retail POS Billing'
+      : type === 'invoice'
+      ? 'Tax Invoices & Quotations'
+      : type === 'inventory'
+      ? 'Live Inventory & Stock'
+      : type === 'gst'
+      ? 'GST Returns & Compliance'
+      : type === 'banking'
+      ? 'Banking & Balance Sheet'
+      : 'Executive Business Dashboard';
+
+  const statsData =
+    type === 'gst'
+      ? [
+          ['GSTR-1 Outward', '₹4,18,500', 'scale'],
+          ['GSTR-2B Reconciled', '98.6% ITC Match', 'document'],
+          ['E-Way & E-Invoice', '24 Compliant', 'truck'],
+        ]
+      : type === 'banking'
+      ? [
+          ['Total Bank Balance', '₹4,61,300', 'landmark'],
+          ['BRS Auto-Reconciled', '96% Matched', 'upload'],
+          ['Net Profit (MTD)', '+₹1,84,200', 'chart'],
+        ]
+      : type === 'inventory'
+      ? [
+          ['Active Products', '428 SKUs', 'box'],
+          ['Reorder Alerts', '3 Low Stock', 'eye'],
+          ['Total Stock Value', '₹8,42,650', 'layers'],
+        ]
+      : [
+          ['Today’s Sales', '₹24,860', 'chart'],
+          ['Active Orders', '18 Invoices', 'receipt'],
+          ['Receivables', '₹68,400', 'wallet'],
+        ];
+
+  const barTitle =
+    type === 'gst'
+      ? 'Monthly GST Output vs Input'
+      : type === 'banking'
+      ? 'Cash Flow & Fund Movement'
+      : type === 'inventory'
+      ? 'Stock Inward vs Outward'
+      : 'Weekly Sales Revenue';
+
+  const activityTitle =
+    type === 'gst'
+      ? 'Statutory Filings'
+      : type === 'banking'
+      ? 'Recent Bank Transactions'
+      : type === 'inventory'
+      ? 'Inventory Stock Log'
+      : 'Recent Activity';
+
+  const activityData =
+    type === 'gst'
+      ? [
+          ['GSTR-1 Monthly Summary', 'Eligible Outward Supplies', '₹52,430'],
+          ['GSTR-2B Auto-Reconciled', '52 of 53 Invoices Match', '₹38,210'],
+          ['E-Invoice IRN Generated', 'IRP Stamped QR #9102', '₹1,24,000'],
+        ]
+      : type === 'banking'
+      ? [
+          ['HDFC Bank Statement', 'Direct RTGS Receipt', '+₹85,000'],
+          ['Supplier Settlement Chq', 'Acct: 50200049281', '-₹34,500'],
+          ['Operating Expense Voucher', 'Office Rent & Power', '-₹18,000'],
+        ]
+      : type === 'inventory'
+      ? [
+          ['Inward Goods #PUR-402', 'Bluebay Suppliers (+120)', '₹34,800'],
+          ['Physical Stock Audit', 'Damaged / Wastage (-2)', '-₹1,400'],
+          ['Counter POS Outward', 'Counter Sale Batch (-8)', '₹6,400'],
+        ]
+      : [
+          ['Tax Invoice #INV-842', 'Aster Retail Pvt Ltd', '₹12,400'],
+          ['Purchase Bill #PUR-291', 'Bluebay Supplies', '₹8,720'],
+          ['Retail POS Sale #POS-715', 'Counter Walk-in Sale', '₹2,897'],
+        ];
+
   return (
     <div className="mock" aria-hidden="true">
       <aside>
         <b>L1</b>
-        {['chart', 'receipt', 'box', 'bag', 'users', 'report'].map((x, i) => (
-          <i
-            className={i === (type === 'inventory' ? 2 : type === 'invoice' ? 1 : 0) ? 'on' : ''}
-            key={x}
-          >
+        {['chart', 'receipt', 'box', 'bag', 'scale', 'landmark'].map((x, i) => (
+          <i className={i === activeIconIndex ? 'on' : ''} key={x}>
             <Icon name={x} size={15} />
           </i>
         ))}
@@ -353,46 +597,38 @@ function Mock({ type = 'dashboard' }) {
         <header>
           <span>
             <small>MY WORKSPACE</small>
-            <b>
-              {type === 'billing'
-                ? 'Retail billing'
-                : type === 'invoice'
-                ? 'Documents'
-                : type === 'inventory'
-                ? 'Inventory overview'
-                : type === 'reports'
-                ? 'Collections'
-                : 'Good morning, Arjun'}
-            </b>
+            <b>{headerTitle}</b>
           </span>
           <i>AS</i>
         </header>
         {type === 'invoice' ? (
           <div className="paper">
             <header>
-              <b>QUOTATION</b>
-              <span>#QTN-0248</span>
+              <b>TAX INVOICE</b>
+              <span>#INV-0248</span>
             </header>
             <div className="parties">
               <span>
-                FROM<b>Northstar Traders</b>
+                FROM<b>Northstar Traders Pvt Ltd</b>
+                <small style={{ fontSize: '6px', color: '#8593a6' }}>GSTIN: 29ABCDE1234F1Z5</small>
               </span>
               <span>
-                PREPARED FOR<b>Aster Retail</b>
+                BILLED TO<b>Aster Retail Enterprises</b>
+                <small style={{ fontSize: '6px', color: '#8593a6' }}>GSTIN: 29XYZPA9876Q1Z2</small>
               </span>
             </div>
             <div className="table">
-              <b>Item</b>
+              <b>Item &amp; HSN</b>
               <b>Qty</b>
               <b>Amount</b>
-              <span>Product starter pack</span>
+              <span>Product Starter Pack (8471)</span>
               <span>12</span>
               <span>₹24,000</span>
-              <span>Delivery & setup</span>
+              <span>Delivery &amp; Setup (9983)</span>
               <span>1</span>
               <span>₹4,500</span>
             </div>
-            <strong>Total &nbsp; ₹28,500</strong>
+            <strong>Total (Incl. 18% GST) &nbsp; ₹33,630</strong>
           </div>
         ) : type === 'billing' ? (
           <div className="pos">
@@ -416,36 +652,26 @@ function Mock({ type = 'dashboard' }) {
               <h4>
                 Total <b>₹2,897</b>
               </h4>
-              <button type="button">Complete sale</button>
+              <button type="button">Complete sale (Cash/UPI)</button>
             </aside>
           </div>
         ) : (
           <>
             <div className="stats">
-              {[
-                ['Today’s sales', '₹24,860', 'chart'],
-                ['Products', type === 'inventory' ? '386 in stock' : '428 items', 'box'],
-                ['Outstanding', '12 records', 'wallet'],
-              ].map(([a, b, c]) => (
+              {statsData.map(([a, b, c]) => (
                 <article key={a}>
                   <i>
                     <Icon name={c} size={15} />
                   </i>
                   <small>{a}</small>
                   <b>{b}</b>
-                  <em>Illustrative data</em>
+                  <em>Live workspace data</em>
                 </article>
               ))}
             </div>
             <div className="mocklower">
               <div className="bars">
-                <b>
-                  {type === 'inventory'
-                    ? 'Stock movement'
-                    : type === 'reports'
-                    ? 'Collection overview'
-                    : 'Sales overview'}
-                </b>
+                <b>{barTitle}</b>
                 <section>
                   {[38, 61, 47, 76, 56, 88, 68].map((x, i) => (
                     <i key={i} style={{ height: `${x}%` }} />
@@ -453,15 +679,15 @@ function Mock({ type = 'dashboard' }) {
                 </section>
               </div>
               <div className="activity">
-                <b>Recent activity</b>
-                {['Invoice #INV-842', 'Purchase #PUR-291', 'Retail sale #POS-715'].map((x, i) => (
-                  <p key={x}>
+                <b>{activityTitle}</b>
+                {activityData.map((x) => (
+                  <p key={x[0]}>
                     <i />
                     <span>
-                      {x}
-                      <small>{['Aster Retail', 'Bluebay Supplies', 'Counter sale'][i]}</small>
+                      {x[0]}
+                      <small>{x[1]}</small>
                     </span>
-                    <b>{['₹12,400', '₹8,720', '₹2,897'][i]}</b>
+                    <b>{x[2]}</b>
                   </p>
                 ))}
               </div>
@@ -685,7 +911,7 @@ export default function LandingView() {
     description.setAttribute('name', 'description');
     description.setAttribute(
       'content',
-      'Manage retail billing, wholesale quotations and invoices, purchases, inventory, customer collections and business reports with LedgerOne.'
+      'Manage retail POS billing, wholesale GST tax invoices, purchases, real-time inventory, GSTR-1/2B statutory compliance, and multi-bank BRS with LedgerOne.'
     );
 
     // Detect active authenticated session from localStorage
@@ -804,8 +1030,7 @@ export default function LandingView() {
                 <em>Simplified.</em>
               </h1>
               <p>
-                Manage retail billing, wholesale quotations and invoices, purchases, inventory and
-                customer collections in one organised workspace.
+                Manage retail POS billing, wholesale GST tax invoices, purchases, live inventory, GST returns and multi-bank reconciliation in one unified workspace.
               </p>
               <div className="actions">
                 {currentUser ? (
@@ -834,15 +1059,19 @@ export default function LandingView() {
               <div className="trust">
                 <span>
                   <Icon name="check" size={14} />
-                  Retail &amp; wholesale
+                  Retail POS &amp; Wholesale
                 </span>
                 <span>
                   <Icon name="check" size={14} />
-                  Connected stock
+                  Live Stock Ledger
                 </span>
                 <span>
                   <Icon name="check" size={14} />
-                  Role-based access
+                  GST, E-Way &amp; E-Invoice
+                </span>
+                <span>
+                  <Icon name="check" size={14} />
+                  Multi-Bank BRS
                 </span>
               </div>
             </div>
@@ -927,30 +1156,30 @@ export default function LandingView() {
           <div className="container">
             <Title
               eyebrow="WHY LEDGERONE"
-              title="Less Manual Work. More Business Clarity."
-              text="Keep the records behind your daily operations structured, connected and easier to follow."
+              title="Less Manual Work. Total Business Clarity."
+              text="Keep billing, inventory, purchasing, banking, and statutory compliance connected in a single operational workspace."
             />
             <div className="claritygrid">
               {[
                 [
-                  'Organised Business Records',
-                  'Keep product, customer, vendor and transaction information within connected workflows.',
+                  'Unified Business Operations',
+                  'Keep products, customers, vendors, multi-bank ledgers, and transactions synchronized across your business.',
                   'layers',
                 ],
                 [
-                  'Separate Sales Workflows',
-                  'Use distinct processes for retail counter billing and wholesale invoicing.',
+                  'Dual Sales Engines (POS & Invoices)',
+                  'Process rapid counter sales with barcode scanning, while generating compliant B2B quotations and GST invoices.',
                   'store',
                 ],
                 [
-                  'Clearer Outstanding Follow-up',
-                  'Review eligible customer collections and outstanding invoice balances.',
-                  'wallet',
+                  'Automated GST & Statutory Filing',
+                  'Generate GSTR-1 summaries, auto-reconcile GSTR-2B JSON, and generate government E-Way Bills & E-Invoices with QR codes.',
+                  'scale',
                 ],
                 [
-                  'Better Stock Visibility',
-                  'Understand how purchases, sales and returns affect stock movement.',
-                  'box',
+                  'Live Inventory & Multi-Bank BRS',
+                  'Track real-time stock movements with low-stock alerts, upload bank statements for BRS, and inspect dynamic Balance Sheets.',
+                  'landmark',
                 ],
               ].map((x, i) => (
                 <article key={x[0]}>
@@ -972,42 +1201,66 @@ export default function LandingView() {
             <Title
               eyebrow="CONNECTED OPERATIONS"
               title="Your Daily Business Workflows, Connected"
-              text="Understand how products, purchases, sales and collections fit together—without mixing distinct payment flows."
+              text="Understand how products, purchases, sales, GST compliance, and banking fit together seamlessly."
             />
             <div className="flowlist">
               {[
                 [
                   '01',
-                  'Product to stock',
-                  'Maintain product records, record purchases and follow stock movement.',
+                  'Product master to live stock',
+                  'Maintain item masters with HSN and barcodes, log inward supplier bills, and track real-time stock balances.',
                   [
-                    ['Product', 'box'],
-                    ['Purchase', 'bag'],
-                    ['Stock movement', 'layers'],
-                    ['Inventory review', 'chart'],
+                    ['Product Master', 'box'],
+                    ['Purchase Inward', 'bag'],
+                    ['Stock Ledger', 'layers'],
+                    ['Reorder Alert', 'eye'],
                   ],
                 ],
                 [
                   '02',
-                  'Wholesale sale to collection',
-                  'Prepare customer documents and track eligible collections against outstanding balances.',
+                  'Wholesale quotation to collection',
+                  'Prepare commercial estimates, convert to GST tax invoices, and track inward payments and party aging.',
                   [
-                    ['Customer', 'users'],
+                    ['Customer Party', 'users'],
                     ['Quotation', 'document'],
-                    ['Invoice', 'receipt'],
-                    ['Collection', 'wallet'],
-                    ['Outstanding', 'eye'],
+                    ['Tax Invoice', 'receipt'],
+                    ['Payment Voucher', 'creditcard'],
+                    ['Party Ledger', 'wallet'],
                   ],
                 ],
                 [
                   '03',
-                  'Retail billing',
-                  'Use a dedicated retail sales flow for counter transactions and supported receipts.',
+                  'Retail counter POS billing',
+                  'High-speed counter terminal for barcode scanning, multi-mode tender, and instant thermal receipt printing.',
                   [
-                    ['Product selection', 'box'],
-                    ['Retail sale', 'store'],
-                    ['Counter payment', 'wallet'],
-                    ['Receipt', 'file'],
+                    ['Barcode Scan', 'tag'],
+                    ['POS Cart', 'store'],
+                    ['Cash / UPI Split', 'wallet'],
+                    ['Thermal Receipt', 'file'],
+                  ],
+                ],
+                [
+                  '04',
+                  'GST compliance & statutory filing',
+                  'End-to-end statutory compliance with automated returns, reconciliation, and logistics documents.',
+                  [
+                    ['Tax Invoice', 'receipt'],
+                    ['E-Way Bill', 'truck'],
+                    ['E-Invoice IRN', 'file'],
+                    ['GSTR-2B JSON', 'scale'],
+                    ['GSTR-1 Summary', 'chart'],
+                  ],
+                ],
+                [
+                  '05',
+                  'Banking, BRS & financial statements',
+                  'Upload bank statements, reconcile entries against vouchers, track expenses, and view real-time Balance Sheets.',
+                  [
+                    ['Bank Account', 'landmark'],
+                    ['Statement Upload', 'upload'],
+                    ['BRS Reconciliation', 'refresh'],
+                    ['Expense Log', 'wallet'],
+                    ['Balance Sheet', 'chart'],
                   ],
                 ],
               ].map((row) => (
@@ -1036,8 +1289,7 @@ export default function LandingView() {
             <div className="note">
               <Icon name="shield" />
               <p>
-                <b>Clear by design:</b> retail counter payments, wholesale customer collections and
-                purchase-related vendor payments remain separate flows.
+                <b>Clear by design:</b> retail counter payments, wholesale customer collections, vendor disbursements, and banking contra transfers remain separate, audited flows.
               </p>
             </div>
           </div>
@@ -1137,22 +1389,28 @@ export default function LandingView() {
             <div className="solutiongrid">
               {[
                 [
-                  'RETAIL SHOPS',
-                  'Keep Counter Billing Organised',
-                  'Use a focused retail sales flow with product records, counter payment and supported receipt output.',
+                  'RETAIL SHOPS & STORES',
+                  'Rapid Counter POS & Barcode Billing',
+                  'Process customer checkouts in seconds with barcode scanning, split cash/UPI/card tender, and thermal slip printing.',
                   'store',
                 ],
                 [
                   'WHOLESALERS & DISTRIBUTORS',
-                  'Manage Quotations, Invoices and Collections',
-                  'Organise customer documents and follow eligible collections against outstanding balances.',
+                  'Quotations, GST Invoicing & Credit Ledgers',
+                  'Send commercial quotations, generate compliant GST invoices with HSN codes, and track overdue receivables with aging analysis.',
                   'truck',
                 ],
                 [
-                  'GROWING BUSINESSES',
-                  'Bring Purchases, Stock and Reports Together',
-                  'Connect vendor records, purchase activity, stock movement and available reports.',
-                  'building',
+                  'MANUFACTURERS & TRADERS',
+                  'Procurement, Stock Ledgers & Reorder Alerts',
+                  'Manage vendor inward bills, track stock movements across multi-unit measures, and prevent stockouts with automated reorder alerts.',
+                  'box',
+                ],
+                [
+                  'ENTERPRISES & GST DEALERS',
+                  'Statutory Filing, E-Way Bills & Multi-Bank BRS',
+                  'Reconcile vendor ITC with GSTR-2B JSON, generate E-Way Bills and E-Invoices, and maintain real-time Balance Sheets.',
+                  'scale',
                 ],
               ].map((x) => (
                 <article key={x[0]}>
@@ -1357,8 +1615,10 @@ export default function LandingView() {
                         <option value="" disabled>
                           Select type
                         </option>
-                        <option>Retail</option>
+                        <option>Retail Shop / Store</option>
                         <option>Wholesale / Distribution</option>
+                        <option>Manufacturing / Assembly</option>
+                        <option>GST-Registered Enterprise</option>
                         <option>Other</option>
                       </select>
                       {errors.type && <small>{errors.type}</small>}
@@ -1369,11 +1629,13 @@ export default function LandingView() {
                         <option value="" disabled>
                           Select requirement
                         </option>
-                        <option>Retail billing</option>
-                        <option>Quotations and invoices</option>
-                        <option>Inventory and purchasing</option>
-                        <option>Collections and reports</option>
-                        <option>General walkthrough</option>
+                        <option>Retail POS &amp; Barcode Billing</option>
+                        <option>Quotations &amp; GST Invoicing</option>
+                        <option>Inventory Control &amp; Reorder Alerts</option>
+                        <option>GST Returns, E-Way Bills &amp; E-Invoice</option>
+                        <option>Multi-Bank BRS &amp; Balance Sheet</option>
+                        <option>Vendor Purchases &amp; Payables</option>
+                        <option>Complete ERP Walkthrough</option>
                       </select>
                       {errors.need && <small>{errors.need}</small>}
                     </label>
