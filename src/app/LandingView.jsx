@@ -346,14 +346,14 @@ export const modulesData = [
         desc: 'Free interactive browser tool to create, customize and download professional PDF quotes instantly',
         icon: 'document',
         tag: 'Free Online Tool',
-        link: '/ledgerone/tools/quotation-maker',
+        link: '/ledgerone/app/tools/quotation-maker',
       },
       {
         name: 'Invoice Generator',
         desc: 'Free instant tax invoice generator with automatic GST math, custom branding and PDF export',
         icon: 'receipt',
         tag: 'Free Online Tool',
-        link: '/ledgerone/tools/invoice-generator',
+        link: '/ledgerone/app/tools/invoice-generator',
       },
       {
         name: 'Data Import',
@@ -894,12 +894,12 @@ export default function LandingView() {
           </nav>
 
           <div className="navActions">
-            <Link href="/ledgerone/login" className="btn outline">
+            <a href="/ledgerone/app/login" className="btn outline">
               Login
-            </Link>
-            <Link href="/ledgerone/signup" className="btn">
+            </a>
+            <a href="/ledgerone/app/signup" className="btn">
               Get Started Free <Icon name="arrow" size={17} />
-            </Link>
+            </a>
           </div>
 
           <button
@@ -934,9 +934,9 @@ export default function LandingView() {
                 connected inventory, GST compliance and real-time Balance Sheets in one seamless software suite.
               </p>
               <div className="actions">
-                <Link href="/ledgerone/signup" className="btn">
+                <a href="/ledgerone/app/signup" className="btn">
                   Get Started Free <Icon name="arrow" size={18} />
-                </Link>
+                </a>
                 <a href="#demo" className="btn light">
                   Request a Demo
                 </a>
@@ -1045,12 +1045,12 @@ export default function LandingView() {
                   <small>0{i + 1}</small>
                   <h3>{x[1]}</h3>
                   <p>{x[2]}</p>
-                  <Link
-                    href={i ? '/ledgerone/tools/invoice-generator' : '/ledgerone/tools/quotation-maker'}
+                  <a
+                    href={i ? '/ledgerone/app/tools/invoice-generator' : '/ledgerone/app/tools/quotation-maker'}
                   >
                     {i ? 'Generate an Invoice Now' : 'Create a Quotation Now'}{' '}
                     <Icon name="arrow" size={18} />
-                  </Link>
+                  </a>
                   <div className="minipaper">
                     <b>{x[0].toUpperCase()}</b>
                     <span />
@@ -1227,9 +1227,9 @@ export default function LandingView() {
                 <li><Icon name="check" size={16} /> Cloud synchronization with zero data loss</li>
               </ul>
               <div className="actions">
-                <Link href="/ledgerone/signup" className="btn">
+                <a href="/ledgerone/app/signup" className="btn">
                   Create Free Account <Icon name="arrow" size={18} />
-                </Link>
+                </a>
               </div>
             </div>
             <div className="mobilevisual">
@@ -1356,8 +1356,8 @@ export default function LandingView() {
           </div>
           <div>
             <b>Free Public Tools</b>
-            <Link href="/ledgerone/tools/quotation-maker">Free Quotation Maker</Link>
-            <Link href="/ledgerone/tools/invoice-generator">Free Invoice Generator</Link>
+            <a href="/ledgerone/app/tools/quotation-maker">Free Quotation Maker</a>
+            <a href="/ledgerone/app/tools/invoice-generator">Free Invoice Generator</a>
             <a href="#tools">Bulk Data Importer</a>
             <a href="#faq">Frequently Asked Questions</a>
           </div>
@@ -1371,3 +1371,4 @@ export default function LandingView() {
     </div>
   );
 }
+

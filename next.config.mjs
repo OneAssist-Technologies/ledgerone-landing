@@ -1,19 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // Proxy /ledgerone app routes and backend APIs to their respective dev servers
+  basePath: '/ledgerone',
+  trailingSlash: false,
+  // Proxy local development requests to the React App and Express Backend
   async rewrites() {
     return [
       {
-        source: '/ledgerone/:path*',
-        destination: 'http://localhost:3005/ledgerone/:path*',
+        source: '/app/:path*',
+        destination: 'http://localhost:3005/ledgerone/app/:path*',
       },
       {
         source: '/ledgeroneapi/:path*',
-        destination: 'http://localhost:5000/ledgeroneapi/:path*',
+        destination: 'http://localhost:5007/ledgeroneapi/:path*',
       },
       {
         source: '/api/:path*',
-        destination: 'http://localhost:5000/api/:path*',
+        destination: 'http://localhost:5007/api/:path*',
       },
     ];
   },
