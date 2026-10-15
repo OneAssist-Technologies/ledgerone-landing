@@ -404,401 +404,157 @@ const faqs = [
   ],
 ];
 
-// Authentic ERP Workspace Mockup matching the user's software interface
-function Mock({ activeModule = 'dashboard', onSelectModule }) {
-  const currentMod = modulesData.find((m) => m.id === activeModule) || modulesData[0];
-
+// Sleek, compact single-screen dashboard mockup for the hero section
+function Mock() {
   return (
-    <div className="mockReal" aria-label="LedgerOne Enterprise Workspace Mockup">
-      {/* Top Global App Header */}
-      <div className="mockAppTop">
-        <div className="mockAppBrand">
-          <div className="mockAppBrandLogo">
-            <Icon name="box" size={14} />
-          </div>
-          <span>Kongu Engineering...</span>
-          <Icon name="chevronLeft" size={14} />
+    <div className="mockCard" aria-label="LedgerOne Workspace Dashboard Preview">
+      {/* Window Titlebar */}
+      <div className="mockTitlebar">
+        <div className="mockDots">
+          <span className="dot red" />
+          <span className="dot yellow" />
+          <span className="dot green" />
         </div>
-
-        <div className="mockAppSearch">
-          <Icon name="search" size={13} />
-          <input
-            type="text"
-            readOnly
-            value="Search products, customers, invoices..."
-            aria-label="Search"
-          />
+        <div className="mockTitle">
+          <Icon name="building" size={13} />
+          <span>Kongu Engineering &amp; Co • LedgerOne POS</span>
         </div>
-
-        <div className="mockAppActions">
-          <button className="mockNewSaleBtn" type="button">
-            <Icon name="plus" size={12} /> New Sale
-          </button>
-          <div className="mockIconBtn">
-            <Icon name="calendar" size={13} />
-          </div>
-          <div className="mockIconBtn">
-            <Icon name="moon" size={13} />
-          </div>
-          <div className="mockIconBtn">
-            <Icon name="bell" size={13} />
-          </div>
-          <div className="mockUserProfile">
-            <div className="mockUserAvatar">N</div>
-            <div className="mockUserInfo">
-              <b>Nitheesh K V</b>
-              <small>SUPER_ADMIN</small>
-            </div>
-          </div>
+        <div className="mockStatusPill">
+          <span className="liveDot" /> POS Online
         </div>
       </div>
 
-      {/* Main Workspace with Sidebar & Content */}
-      <div className="mockAppBody">
-        {/* Left Sidebar Menu */}
-        <aside className="mockSidebar">
-          <button
-            className={`mockSidebarItem ${activeModule === 'dashboard' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('dashboard')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="chart" size={14} /> Dashboard
-            </span>
+      {/* Main Single-Screen Body */}
+      <div className="mockGrid">
+        {/* Compact Icon Sidebar */}
+        <aside className="mockNavRail">
+          <div className="railLogo">LO</div>
+          <button className="railItem active" type="button" title="Dashboard">
+            <Icon name="chart" size={16} />
           </button>
-
-          <div className="mockSidebarGroupTitle">SALES &amp; BILLING</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'sales-billing' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('sales-billing')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="store" size={14} /> Sales &amp; Billing
-            </span>
-            <Icon name="chevronDown" size={11} />
+          <button className="railItem" type="button" title="Sales &amp; Billing">
+            <Icon name="receipt" size={16} />
           </button>
-          {activeModule === 'sales-billing' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">👤 Customers</span>
-              <span className="mockSidebarSubItem">📄 Quotations</span>
-              <span className="mockSidebarSubItem">🧾 Invoices</span>
-              <span className="mockSidebarSubItem">🏪 Sales &amp; Billing</span>
-              <span className="mockSidebarSubItem">💳 Payments Received</span>
-              <span className="mockSidebarSubItem">🏷️ Discounts</span>
-            </div>
-          )}
-
-          <div className="mockSidebarGroupTitle">PURCHASES</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'purchases' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('purchases')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="cart" size={14} /> Purchases
-            </span>
-            <Icon name="chevronDown" size={11} />
+          <button className="railItem" type="button" title="Purchases">
+            <Icon name="bag" size={16} />
           </button>
-          {activeModule === 'purchases' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">👥 Vendors</span>
-              <span className="mockSidebarSubItem">🛒 Purchases</span>
-              <span className="mockSidebarSubItem">💳 Purchase Payments</span>
-            </div>
-          )}
-
-          <div className="mockSidebarGroupTitle">INVENTORY</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'inventory' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('inventory')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="box" size={14} /> Inventory
-            </span>
-            <Icon name="chevronDown" size={11} />
+          <button className="railItem" type="button" title="Inventory">
+            <Icon name="box" size={16} />
           </button>
-          {activeModule === 'inventory' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">📦 Products</span>
-              <span className="mockSidebarSubItem">🏢 Inventory</span>
-            </div>
-          )}
-
-          <div className="mockSidebarGroupTitle">GST &amp; COMPLIANCE</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'gst-compliance' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('gst-compliance')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="scale" size={14} /> GST &amp; Compliance
-            </span>
-            <Icon name="chevronDown" size={11} />
+          <button className="railItem" type="button" title="GST Compliance">
+            <Icon name="document" size={16} />
           </button>
-          {activeModule === 'gst-compliance' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">⚖️ GST Returns</span>
-              <span className="mockSidebarSubItem">🚚 E-Way Bill</span>
-              <span className="mockSidebarSubItem">🧾 E-Invoice</span>
-              <span className="mockSidebarSubItem">🏷️ Tax Rates</span>
-            </div>
-          )}
-
-          <div className="mockSidebarGroupTitle">FINANCE &amp; REPORTS</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'finance-reports' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('finance-reports')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="bank" size={14} /> Finance &amp; Reports
-            </span>
-            <Icon name="chevronDown" size={11} />
+          <button className="railItem" type="button" title="Settings">
+            <Icon name="gear" size={16} />
           </button>
-          {activeModule === 'finance-reports' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">🏛️ Banking</span>
-              <span className="mockSidebarSubItem">👛 Expenses</span>
-              <span className="mockSidebarSubItem">📊 Reports</span>
-              <span className="mockSidebarSubItem">⚖️ Balance Sheet</span>
-            </div>
-          )}
-
-          <div className="mockSidebarGroupTitle">TOOLS</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'tools' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('tools')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="wrench" size={14} /> Tools
-            </span>
-            <Icon name="chevronDown" size={11} />
-          </button>
-          {activeModule === 'tools' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">📄 Quotation Maker</span>
-              <span className="mockSidebarSubItem">🧾 Invoice Generator</span>
-              <span className="mockSidebarSubItem">☁️ Data Import</span>
-            </div>
-          )}
-
-          <div className="mockSidebarGroupTitle">SYSTEM &amp; SETTINGS</div>
-          <button
-            className={`mockSidebarItem ${activeModule === 'system-settings' ? 'active' : ''}`}
-            onClick={() => onSelectModule && onSelectModule('system-settings')}
-            type="button"
-          >
-            <span className="mockSidebarItemLeft">
-              <Icon name="gear" size={14} /> System &amp; Settings
-            </span>
-            <Icon name="chevronDown" size={11} />
-          </button>
-          {activeModule === 'system-settings' && (
-            <div className="mockSidebarSubList">
-              <span className="mockSidebarSubItem">👤 Users</span>
-              <span className="mockSidebarSubItem">⚙️ Settings</span>
-            </div>
-          )}
         </aside>
 
-        {/* Main Content Area */}
-        <main className="mockMain">
-          {activeModule === 'dashboard' ? (
-            <>
-              {/* Dashboard Header matching screenshot */}
-              <div className="mockMainHeader">
-                <div>
-                  <h3>Dashboard</h3>
-                  <p>Welcome back! Here&apos;s what&apos;s happening today.</p>
-                </div>
-                <div className="mockMainHeaderControls">
-                  <button className="mockHeaderBtn" type="button">
-                    <Icon name="calendar" size={11} /> Today <Icon name="chevronDown" size={9} />
-                  </button>
-                  <button className="mockHeaderBtn" type="button">
-                    <Icon name="gear" size={11} /> Customize
-                  </button>
-                  <button className="mockHeaderBtn" type="button">
-                    <Icon name="refresh" size={11} /> Refresh
-                  </button>
-                </div>
+        {/* Dashboard Workspace */}
+        <main className="mockDashboard">
+          {/* Header Bar */}
+          <div className="dashHeader">
+            <div>
+              <h3>Dashboard Overview</h3>
+              <small>Counter 01 • Active Shift • Nitheesh (Admin)</small>
+            </div>
+            <div className="dashHeaderBtn">
+              <Icon name="plus" size={13} /> New Sale
+            </div>
+          </div>
+
+          {/* 4 Stat Cards */}
+          <div className="dashStats">
+            <div className="dashStatCard">
+              <div className="statTop">
+                <small>TODAY&apos;S SALES</small>
+                <Icon name="chart" size={14} />
               </div>
+              <b>₹42,850</b>
+              <span className="statTrend green">↑ +14.2%</span>
+            </div>
 
-              {/* 8 KPI Cards Grid exactly from user's dashboard */}
-              <div className="mockKpiGrid">
-                {/* 1. Today's Sales */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TODAY&apos;S SALES</span>
-                    <b className="mockKpiValue">₹0.00</b>
-                    <span className="mockKpiMeta">Filtered period</span>
-                  </div>
-                  <div className="mockKpiBadge green">
-                    <Icon name="trendingUp" size={14} />
-                  </div>
-                </div>
-
-                {/* 2. Today's Estimated Profit */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TODAY&apos;S ESTIMATED PROFIT</span>
-                    <b className="mockKpiValue">₹0.00</b>
-                    <span className="mockKpiMeta neutral">Estimated margin</span>
-                  </div>
-                  <div className="mockKpiBadge blue">
-                    <Icon name="wallet" size={14} />
-                  </div>
-                </div>
-
-                {/* 3. Total Products */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TOTAL PRODUCTS</span>
-                    <b className="mockKpiValue">0</b>
-                    <span className="mockKpiMeta neutral">In stock catalog</span>
-                  </div>
-                  <div className="mockKpiBadge purple">
-                    <Icon name="box" size={14} />
-                  </div>
-                </div>
-
-                {/* 4. Low Stock Items */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">LOW STOCK ITEMS</span>
-                    <b className="mockKpiValue">0</b>
-                    <span className="mockKpiMeta warn">Needs replenishment</span>
-                  </div>
-                  <div className="mockKpiBadge orange">
-                    <Icon name="warning" size={14} />
-                  </div>
-                </div>
-
-                {/* 5. Total Invoiced */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TOTAL INVOICED</span>
-                    <b className="mockKpiValue">₹0.00</b>
-                    <span className="mockKpiMeta neutral">Billed receivables</span>
-                  </div>
-                  <div className="mockKpiBadge violet">
-                    <Icon name="document" size={14} />
-                  </div>
-                </div>
-
-                {/* 6. Total Customers */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TOTAL CUSTOMERS</span>
-                    <b className="mockKpiValue">0</b>
-                    <span className="mockKpiMeta neutral">Active directory</span>
-                  </div>
-                  <div className="mockKpiBadge pink">
-                    <Icon name="users" size={14} />
-                  </div>
-                </div>
-
-                {/* 7. Total Vendors */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TOTAL VENDORS</span>
-                    <b className="mockKpiValue">0</b>
-                    <span className="mockKpiMeta neutral">Supplier accounts</span>
-                  </div>
-                  <div className="mockKpiBadge amber">
-                    <Icon name="building" size={14} />
-                  </div>
-                </div>
-
-                {/* 8. Today's Orders */}
-                <div className="mockKpiCard">
-                  <div className="mockKpiCardContent">
-                    <span className="mockKpiTitle">TODAY&apos;S ORDERS</span>
-                    <b className="mockKpiValue">0</b>
-                    <span className="mockKpiMeta neutral">POS checkout volume</span>
-                  </div>
-                  <div className="mockKpiBadge teal">
-                    <Icon name="cart" size={14} />
-                  </div>
-                </div>
+            <div className="dashStatCard">
+              <div className="statTop">
+                <small>EST. PROFIT</small>
+                <Icon name="wallet" size={14} />
               </div>
+              <b>₹12,400</b>
+              <span className="statTrend blue">28.9% Margin</span>
+            </div>
 
-              {/* Analytics Rows matching screenshot */}
-              <div className="mockAnalyticsGrid">
-                <div className="mockAnalyticsCard">
-                  <div className="mockAnalyticsHead">
-                    <b>Revenue &amp; Profit Trend</b>
-                    <p>Today performance</p>
-                  </div>
-                  <div className="mockEmptyState">
-                    No sales data found for the selected period.
-                  </div>
-                </div>
-
-                <div className="mockAnalyticsCard">
-                  <div className="mockAnalyticsHead">
-                    <b>Today Sales</b>
-                    <p>Today performance breakdown</p>
-                  </div>
-                  <div className="mockEmptyState">
-                    No sales data found for the selected period.
-                  </div>
-                </div>
+            <div className="dashStatCard">
+              <div className="statTop">
+                <small>INVOICES</small>
+                <Icon name="receipt" size={14} />
               </div>
-            </>
-          ) : (
-            /* Contextual Module View for other modules */
-            <div className="mockModuleDetailView">
-              <div className="mockMainHeader">
-                <div>
-                  <h3>{currentMod.name}</h3>
-                  <p>{currentMod.description}</p>
-                </div>
-                <span className="submoduleBadge">{currentMod.badge}</span>
-              </div>
+              <b>18</b>
+              <span className="statTrend muted">All cleared</span>
+            </div>
 
-              {/* Submodules Pills Bar */}
-              <div className="mockSubmodulesPills">
-                {currentMod.submodules.map((sub, i) => (
-                  <span className="mockSubmoduleChip" key={i}>
-                    <Icon name={sub.icon} size={11} />
-                    {sub.name}
-                  </span>
+            <div className="dashStatCard">
+              <div className="statTop">
+                <small>STOCK ALERT</small>
+                <Icon name="box" size={14} />
+              </div>
+              <b className="alertText">3 Items</b>
+              <span className="statTrend amber">Reorder low</span>
+            </div>
+          </div>
+
+          {/* Split Analytics & Recent Activity */}
+          <div className="dashBottom">
+            {/* Sales Flow Bar Chart */}
+            <div className="dashChartBox">
+              <div className="boxTitle">
+                <span>Hourly Transaction Traffic</span>
+                <small>Peak: 2:00 PM</small>
+              </div>
+              <div className="barChart">
+                {[
+                  { h: '38%', t: '10 AM' },
+                  { h: '55%', t: '11 AM' },
+                  { h: '72%', t: '12 PM' },
+                  { h: '92%', t: '1 PM' },
+                  { h: '80%', t: '2 PM' },
+                  { h: '60%', t: '3 PM' },
+                  { h: '45%', t: '4 PM' },
+                ].map((col, idx) => (
+                  <div className="barCol" key={idx}>
+                    <div className="barTrack">
+                      <div className="barFill" style={{ height: col.h }} />
+                    </div>
+                    <small>{col.t}</small>
+                  </div>
                 ))}
               </div>
-
-              {/* Realistic Operational Preview Table */}
-              <table className="mockPreviewTable">
-                <thead>
-                  <tr>
-                    <th>Item / Sub-Module</th>
-                    <th>Capability</th>
-                    <th>Indian Compliance</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {currentMod.submodules.slice(0, 4).map((sub, i) => (
-                    <tr key={i}>
-                      <td>
-                        <b>{sub.name}</b>
-                      </td>
-                      <td>{sub.desc}</td>
-                      <td>
-                        <span className="mockStatusTag info">{sub.tag}</span>
-                      </td>
-                      <td>
-                        <span className="mockStatusTag success">Active &bull; Ready</span>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
             </div>
-          )}
+
+            {/* Recent Counter Invoices */}
+            <div className="dashRecentBox">
+              <div className="boxTitle">
+                <span>Recent Invoices</span>
+                <small>Live Feed</small>
+              </div>
+              <div className="recentList">
+                {[
+                  { id: 'INV-00142', method: 'Cash POS', amt: '₹2,450', time: '2m ago' },
+                  { id: 'INV-00143', method: 'UPI Paid', amt: '₹8,120', time: '14m ago' },
+                  { id: 'INV-00144', method: 'Tax Invoice', amt: '₹14,500', time: '28m ago' },
+                ].map((row, idx) => (
+                  <div className="recentItem" key={idx}>
+                    <div className="recentIcon">
+                      <Icon name="check" size={11} />
+                    </div>
+                    <div className="recentMeta">
+                      <b>{row.id}</b>
+                      <small>{row.method} • {row.time}</small>
+                    </div>
+                    <strong className="recentAmt">{row.amt}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </main>
       </div>
     </div>
@@ -846,7 +602,6 @@ function Phone({ logoUrl }) {
 
 export default function LandingView() {
   const [menu, setMenu] = useState(false);
-  const [heroModule, setHeroModule] = useState('dashboard');
   const [featureModule, setFeatureModule] = useState('sales-billing');
   const [faq, setFaq] = useState(0);
   const [sent, setSent] = useState(false);
@@ -868,7 +623,6 @@ export default function LandingView() {
     if (!Object.keys(next).length) setSent(true);
   }
 
-  const activeHeroModuleData = modulesData.find((m) => m.id === heroModule) || modulesData[0];
   const activeFeatureModuleData = modulesData.find((m) => m.id === featureModule) || modulesData[1];
 
   return (
@@ -964,53 +718,12 @@ export default function LandingView() {
                 </span>
               </div>
 
-              {/* Hero Modules & Sub-modules Interactive Navigator */}
-              <div className="heroModules" id="modules">
-                <div className="heroModulesHead">
-                  <small>EXPLORE CORE MODULES ({modulesData.length})</small>
-                  <span>Click to preview in workspace</span>
-                </div>
-                <div className="heroModulePills">
-                  {modulesData.map((m) => (
-                    <button
-                      className={`heroModulePill ${heroModule === m.id ? 'active' : ''}`}
-                      key={m.id}
-                      onClick={() => setHeroModule(m.id)}
-                      type="button"
-                    >
-                      <Icon name={m.icon} size={14} />
-                      {m.name}
-                      <span className="pillCount">{m.submodules.length}</span>
-                    </button>
-                  ))}
-                </div>
 
-                {/* Submodules Strip */}
-                <div className="heroSubmodulesStrip">
-                  <div className="heroSubmodulesTitle">
-                    <span>
-                      {activeHeroModuleData.name} Sub-Modules ({activeHeroModuleData.submodules.length}):
-                    </span>
-                    <small>{activeHeroModuleData.description}</small>
-                  </div>
-                  <div className="heroSubmodulesList">
-                    {activeHeroModuleData.submodules.map((sub, idx) => (
-                      <span className="heroSubmoduleTag" key={idx}>
-                        <Icon name={sub.icon} size={12} />
-                        {sub.name}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
 
             {/* Hero Visual Mockup */}
             <div className="heroVisual">
-              <Mock
-                activeModule={heroModule}
-                onSelectModule={(id) => setHeroModule(id)}
-              />
+              <Mock />
             </div>
           </div>
         </section>
@@ -1069,6 +782,7 @@ export default function LandingView() {
         </section>
 
         {/* Features & Sub-modules Deep Dive */}
+        <div id="modules" />
         <section className="section features" id="features">
           <div className="container">
             <Title
