@@ -816,6 +816,7 @@ textarea:focus-visible {
   color: var(--blue);
   font-size: 13px;
   font-weight: 700;
+  cursor: pointer;
 }
 .minipaper {
   width: 140px;

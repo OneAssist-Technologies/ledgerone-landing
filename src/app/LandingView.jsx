@@ -825,14 +825,12 @@ export default function LandingView() {
                   'Quotation Maker',
                   'Prepare itemised quotations with customer details, product quantities, pricing, applicable tax details and commercial terms.',
                   'document',
-                  '/ledgerone/app/tools/quotation-maker',
                 ],
                 [
                   'Invoice',
                   'Invoice Generator',
                   'Create a clear professional invoice preview with itemised document details and consistent totals.',
                   'receipt',
-                  '/ledgerone/app/tools/invoice-generator',
                 ],
               ].map((x, i) => (
                 <article className="toolcard" key={x[0]}>
@@ -842,20 +840,12 @@ export default function LandingView() {
                   <small>0{i + 1}</small>
                   <h3>{x[1]}</h3>
                   <p>{x[2]}</p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
-                    <button
-                      onClick={() => setBuilder(x[0])}
-                      type="button"
-                    >
-                      {i ? 'Generate an Invoice' : 'Create a Quotation'} <Icon name="arrow" size={18} />
-                    </button>
-                    <a
-                      href={x[4]}
-                      style={{ fontSize: '12px', color: 'var(--blue)', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
-                    >
-                      Open Full Screen Tool &rarr;
-                    </a>
-                  </div>
+                  <button
+                    onClick={() => setBuilder(x[0])}
+                    type="button"
+                  >
+                    {i ? 'Generate an Invoice' : 'Create a Quotation'} <Icon name="arrow" size={18} />
+                  </button>
                   <div className="minipaper">
                     <b>{x[0].toUpperCase()}</b>
                     <span />
