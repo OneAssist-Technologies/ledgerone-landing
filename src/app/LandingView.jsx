@@ -674,6 +674,8 @@ export default function LandingView() {
   const [builder, setBuilder] = useState(null);
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
+  const [currentUser, setCurrentUser] = useState(null);
+  const [companySlug, setCompanySlug] = useState('company');
 
   useEffect(() => {
     document.title = 'LedgerOne | Billing, Inventory & Business Management Software';
@@ -685,6 +687,29 @@ export default function LandingView() {
       'content',
       'Manage retail billing, wholesale quotations and invoices, purchases, inventory, customer collections and business reports with LedgerOne.'
     );
+
+    // Detect active authenticated session from localStorage
+    try {
+      const token = localStorage.getItem('ledgerone_token');
+      const rawUser = localStorage.getItem('ledgerone_user');
+      if (token && rawUser) {
+        const parsed = JSON.parse(rawUser);
+        if (parsed) {
+          setCurrentUser(parsed);
+          const name =
+            parsed?.company?.slug ||
+            parsed?.company?.companyName ||
+            parsed?.companyName ||
+            (typeof parsed?.company === 'string' ? parsed.company : null);
+          const slug = name
+            ? String(name).trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '')
+            : 'company';
+          setCompanySlug(slug || 'company');
+        }
+      }
+    } catch {
+      // ignore parsing error
+    }
   }, []);
 
   function submit(e) {
@@ -723,12 +748,33 @@ export default function LandingView() {
             ))}
           </nav>
           <section>
-            <a href="/ledgerone/login" className="btn outline" style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}>
-              Login
-            </a>
-            <Btn href="/ledgerone/register">
-              Get Started Free <Icon name="arrow" size={17} />
-            </Btn>
+            {currentUser ? (
+              <>
+                <Btn href={`/ledgerone/${companySlug}`}>
+                  Go to Dashboard <Icon name="arrow" size={17} />
+                </Btn>
+                <a
+                  href="/ledgerone/register"
+                  className="btn outline"
+                  style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}
+                >
+                  Register New
+                </a>
+              </>
+            ) : (
+              <>
+                <a
+                  href="/ledgerone/login"
+                  className="btn outline"
+                  style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}
+                >
+                  Login
+                </a>
+                <Btn href="/ledgerone/register">
+                  Get Started Free <Icon name="arrow" size={17} />
+                </Btn>
+              </>
+            )}
           </section>
           <button
             className="menubtn"
@@ -762,12 +808,25 @@ export default function LandingView() {
                 customer collections in one organised workspace.
               </p>
               <div className="actions">
-                <Btn href="/ledgerone/register">
-                  Get Started Free <Icon name="arrow" size={18} />
-                </Btn>
-                <Btn href="#demo" kind="outline">
-                  Request a Demo
-                </Btn>
+                {currentUser ? (
+                  <>
+                    <Btn href={`/ledgerone/${companySlug}`}>
+                      Go to Dashboard <Icon name="arrow" size={18} />
+                    </Btn>
+                    <Btn href="/ledgerone/register" kind="outline">
+                      Register Another Account
+                    </Btn>
+                  </>
+                ) : (
+                  <>
+                    <Btn href="/ledgerone/register">
+                      Get Started Free <Icon name="arrow" size={18} />
+                    </Btn>
+                    <Btn href="#demo" kind="outline">
+                      Request a Demo
+                    </Btn>
+                  </>
+                )}
               </div>
               <a className="textlink" href="#tools">
                 Explore document tools <Icon name="arrow" size={17} />
@@ -1366,14 +1425,46 @@ export default function LandingView() {
           </section>
           <section>
             <b>Account &amp; Access</b>
-            <a href="/ledgerone/login">Login to Account</a>
-            <a href="/ledgerone/register">Register Free</a>
+            {currentUser ? (
+              <>
+                <a href={`/ledgerone/${companySlug}`}>
+                  Go to Dashboard ({currentUser.company?.companyName || currentUser.name || 'Workspace'})
+                </a>
+                <a href="/ledgerone/register">Register Another Organization</a>
+                <button
+                  type="button"
+                  style={{
+                    background: 'none',
+                    border: 'none',
+                    padding: 0,
+                    color: 'var(--muted)',
+                    textAlign: 'left',
+                    cursor: 'pointer',
+                    font: 'inherit',
+                    fontSize: '13px',
+                  }}
+                  onClick={() => {
+                    localStorage.removeItem('ledgerone_token');
+                    localStorage.removeItem('ledgerone_user');
+                    setCurrentUser(null);
+                    window.location.reload();
+                  }}
+                >
+                  Log Out
+                </button>
+              </>
+            ) : (
+              <>
+                <a href="/ledgerone/login">Login to Account</a>
+                <a href="/ledgerone/register">Register Free</a>
+              </>
+            )}
             <a href="#demo">Request a Demo</a>
             <a href="https://oneassist.net.in/contact">Contact Support</a>
           </section>
         </div>
         <div className="container copyright">
-          © {new Date().getFullYear()} OneAssist Technologies. All rights reserved.
+          © 2026 OneAssist Technologies. All rights reserved.
           <span>LedgerOne — connected business operations.</span>
         </div>
       </footer>
