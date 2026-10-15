@@ -404,154 +404,295 @@ const faqs = [
   ],
 ];
 
-// Sleek, compact single-screen dashboard mockup for the hero section
+// Fixed Enterprise Dashboard Screen Mockup matching LedgerOne's actual software UI
 function Mock() {
   return (
-    <div className="mockCard" aria-label="LedgerOne Workspace Dashboard Preview">
-      {/* Window Titlebar */}
-      <div className="mockTitlebar">
-        <div className="mockDots">
-          <span className="dot red" />
-          <span className="dot yellow" />
-          <span className="dot green" />
+    <div className="mockReal" aria-label="LedgerOne Enterprise Workspace Dashboard">
+      {/* Top Global App Header */}
+      <div className="mockAppTop">
+        <div className="mockAppBrand">
+          <div className="mockAppBrandLogo">
+            <Icon name="box" size={13} />
+          </div>
+          <span>Surya Enterprises &amp; Retail</span>
+          <Icon name="chevronDown" size={11} />
         </div>
-        <div className="mockTitle">
-          <Icon name="building" size={13} />
-          <span>Kongu Engineering &amp; Co • LedgerOne POS</span>
+
+        <div className="mockAppSearch">
+          <Icon name="search" size={12} />
+          <input
+            type="text"
+            readOnly
+            value="Search products, customers, invoices..."
+            aria-label="Search"
+          />
         </div>
-        <div className="mockStatusPill">
-          <span className="liveDot" /> POS Online
+
+        <div className="mockAppActions">
+          <button className="mockNewSaleBtn" type="button">
+            <Icon name="plus" size={11} /> New Sale
+          </button>
+          <div className="mockIconBtn" title="Calendar">
+            <Icon name="calendar" size={12} />
+          </div>
+          <div className="mockIconBtn" title="Theme">
+            <Icon name="moon" size={12} />
+          </div>
+          <div className="mockIconBtn" title="Notifications">
+            <Icon name="bell" size={12} />
+          </div>
+          <div className="mockUserProfile">
+            <div className="mockUserAvatar">S</div>
+            <div className="mockUserInfo">
+              <b>Store Admin</b>
+              <small>SUPER_ADMIN</small>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Main Single-Screen Body */}
-      <div className="mockGrid">
-        {/* Compact Icon Sidebar */}
-        <aside className="mockNavRail">
-          <div className="railLogo">LO</div>
-          <button className="railItem active" type="button" title="Dashboard">
-            <Icon name="chart" size={16} />
-          </button>
-          <button className="railItem" type="button" title="Sales &amp; Billing">
-            <Icon name="receipt" size={16} />
-          </button>
-          <button className="railItem" type="button" title="Purchases">
-            <Icon name="bag" size={16} />
-          </button>
-          <button className="railItem" type="button" title="Inventory">
-            <Icon name="box" size={16} />
-          </button>
-          <button className="railItem" type="button" title="GST Compliance">
-            <Icon name="document" size={16} />
-          </button>
-          <button className="railItem" type="button" title="Settings">
-            <Icon name="gear" size={16} />
-          </button>
+      {/* Main Workspace with Sidebar & Content */}
+      <div className="mockAppBody">
+        {/* Left Sidebar Menu */}
+        <aside className="mockSidebar">
+          <div className="mockSidebarItem active">
+            <div className="mockSidebarItemLeft">
+              <Icon name="chart" size={13} />
+              <span>Dashboard</span>
+            </div>
+          </div>
+
+          <div className="mockSidebarGroupTitle">SALES &amp; BILLING</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="store" size={13} />
+              <span>Sales &amp; Billing</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
+
+          <div className="mockSidebarGroupTitle">PURCHASES</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="bag" size={13} />
+              <span>Purchases</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
+
+          <div className="mockSidebarGroupTitle">INVENTORY</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="box" size={13} />
+              <span>Inventory</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
+
+          <div className="mockSidebarGroupTitle">GST &amp; COMPLIANCE</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="scale" size={13} />
+              <span>GST &amp; Compliance</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
+
+          <div className="mockSidebarGroupTitle">FINANCE &amp; REPORTS</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="building" size={13} />
+              <span>Finance &amp; Reports</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
+
+          <div className="mockSidebarGroupTitle">TOOLS</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="wrench" size={13} />
+              <span>Tools</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
+
+          <div className="mockSidebarGroupTitle">SYSTEM &amp; SETTINGS</div>
+          <div className="mockSidebarItem">
+            <div className="mockSidebarItemLeft">
+              <Icon name="gear" size={13} />
+              <span>System &amp; Settings</span>
+            </div>
+            <Icon name="chevronDown" size={10} />
+          </div>
         </aside>
 
         {/* Dashboard Workspace */}
-        <main className="mockDashboard">
-          {/* Header Bar */}
-          <div className="dashHeader">
+        <main className="mockDashboardView">
+          {/* Header Row */}
+          <div className="mockDashHeader">
             <div>
-              <h3>Dashboard Overview</h3>
-              <small>Counter 01 • Active Shift • Nitheesh (Admin)</small>
+              <h3>Dashboard</h3>
+              <p>Welcome back! Here&apos;s what&apos;s happening today.</p>
             </div>
-            <div className="dashHeaderBtn">
-              <Icon name="plus" size={13} /> New Sale
+            <div className="mockDashFilters">
+              <span className="mockFilterPill">
+                <Icon name="calendar" size={11} /> Today <Icon name="chevronDown" size={9} />
+              </span>
+              <span className="mockFilterPill">
+                <Icon name="gear" size={11} /> Customize
+              </span>
+              <span className="mockFilterPill">
+                <Icon name="refresh" size={11} /> Refresh
+              </span>
             </div>
           </div>
 
-          {/* 4 Stat Cards */}
-          <div className="dashStats">
-            <div className="dashStatCard">
-              <div className="statTop">
+          {/* 8 KPI Cards (4 x 2) */}
+          <div className="mockKpiGrid">
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
                 <small>TODAY&apos;S SALES</small>
-                <Icon name="chart" size={14} />
+                <span className="kpiIcon green"><Icon name="chart" size={13} /></span>
               </div>
-              <b>₹42,850</b>
-              <span className="statTrend green">↑ +14.2%</span>
+              <b>₹48,250.00</b>
+              <span className="mockKpiMeta positive">↑ +14.2% today</span>
             </div>
 
-            <div className="dashStatCard">
-              <div className="statTop">
-                <small>EST. PROFIT</small>
-                <Icon name="wallet" size={14} />
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>TODAY&apos;S ESTIMATED PROFIT</small>
+                <span className="kpiIcon blue"><Icon name="wallet" size={13} /></span>
               </div>
-              <b>₹12,400</b>
-              <span className="statTrend blue">28.9% Margin</span>
+              <b>₹14,680.00</b>
+              <span className="mockKpiMeta">30.4% margin</span>
             </div>
 
-            <div className="dashStatCard">
-              <div className="statTop">
-                <small>INVOICES</small>
-                <Icon name="receipt" size={14} />
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>TOTAL PRODUCTS</small>
+                <span className="kpiIcon purple"><Icon name="box" size={13} /></span>
               </div>
-              <b>18</b>
-              <span className="statTrend muted">All cleared</span>
+              <b>1,248</b>
+              <span className="mockKpiMeta">In stock catalog</span>
             </div>
 
-            <div className="dashStatCard">
-              <div className="statTop">
-                <small>STOCK ALERT</small>
-                <Icon name="box" size={14} />
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>LOW STOCK ITEMS</small>
+                <span className="kpiIcon amber"><Icon name="shield" size={13} /></span>
               </div>
-              <b className="alertText">3 Items</b>
-              <span className="statTrend amber">Reorder low</span>
+              <b className="amberText">6</b>
+              <span className="mockKpiMeta warning">Needs replenishment</span>
+            </div>
+
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>TOTAL INVOICED</small>
+                <span className="kpiIcon indigo"><Icon name="receipt" size={13} /></span>
+              </div>
+              <b>₹3,84,500.00</b>
+              <span className="mockKpiMeta">Billed receivables</span>
+            </div>
+
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>TOTAL CUSTOMERS</small>
+                <span className="kpiIcon pink"><Icon name="users" size={13} /></span>
+              </div>
+              <b>420</b>
+              <span className="mockKpiMeta">Active directory</span>
+            </div>
+
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>TOTAL VENDORS</small>
+                <span className="kpiIcon orange"><Icon name="building" size={13} /></span>
+              </div>
+              <b>38</b>
+              <span className="mockKpiMeta">Supplier accounts</span>
+            </div>
+
+            <div className="mockKpiCard">
+              <div className="mockKpiTop">
+                <small>TODAY&apos;S ORDERS</small>
+                <span className="kpiIcon teal"><Icon name="store" size={13} /></span>
+              </div>
+              <b>34</b>
+              <span className="mockKpiMeta">POS checkout volume</span>
             </div>
           </div>
 
-          {/* Split Analytics & Recent Activity */}
-          <div className="dashBottom">
-            {/* Sales Flow Bar Chart */}
-            <div className="dashChartBox">
-              <div className="boxTitle">
-                <span>Hourly Transaction Traffic</span>
-                <small>Peak: 2:00 PM</small>
+          {/* 2 Analytics Boxes */}
+          <div className="mockAnalyticsRow">
+            {/* Revenue & Profit Trend */}
+            <div className="mockAnalyticsBox">
+              <div className="analyticsHead">
+                <div>
+                  <b>Revenue &amp; Profit Trend</b>
+                  <small>Today performance</small>
+                </div>
+                <span className="trendBadge">+18.4%</span>
               </div>
-              <div className="barChart">
+              <div className="trendBarChart">
                 {[
-                  { h: '38%', t: '10 AM' },
-                  { h: '55%', t: '11 AM' },
-                  { h: '72%', t: '12 PM' },
-                  { h: '92%', t: '1 PM' },
-                  { h: '80%', t: '2 PM' },
-                  { h: '60%', t: '3 PM' },
-                  { h: '45%', t: '4 PM' },
-                ].map((col, idx) => (
-                  <div className="barCol" key={idx}>
-                    <div className="barTrack">
-                      <div className="barFill" style={{ height: col.h }} />
+                  { h: '38%', t: '9 AM' },
+                  { h: '52%', t: '10 AM' },
+                  { h: '70%', t: '11 AM' },
+                  { h: '88%', t: '12 PM' },
+                  { h: '98%', t: '1 PM' },
+                  { h: '85%', t: '2 PM' },
+                  { h: '62%', t: '3 PM' },
+                  { h: '46%', t: '4 PM' },
+                ].map((bar, idx) => (
+                  <div className="trendCol" key={idx}>
+                    <div className="trendTrack">
+                      <div className="trendFill" style={{ height: bar.h }} />
                     </div>
-                    <small>{col.t}</small>
+                    <small>{bar.t}</small>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Recent Counter Invoices */}
-            <div className="dashRecentBox">
-              <div className="boxTitle">
-                <span>Recent Invoices</span>
-                <small>Live Feed</small>
+            {/* Today's Sales Breakdown */}
+            <div className="mockAnalyticsBox">
+              <div className="analyticsHead">
+                <div>
+                  <b>Today Sales Breakdown</b>
+                  <small>₹48,250 Total Collected</small>
+                </div>
+                <span className="livePill">Live</span>
               </div>
-              <div className="recentList">
-                {[
-                  { id: 'INV-00142', method: 'Cash POS', amt: '₹2,450', time: '2m ago' },
-                  { id: 'INV-00143', method: 'UPI Paid', amt: '₹8,120', time: '14m ago' },
-                  { id: 'INV-00144', method: 'Tax Invoice', amt: '₹14,500', time: '28m ago' },
-                ].map((row, idx) => (
-                  <div className="recentItem" key={idx}>
-                    <div className="recentIcon">
-                      <Icon name="check" size={11} />
-                    </div>
-                    <div className="recentMeta">
-                      <b>{row.id}</b>
-                      <small>{row.method} • {row.time}</small>
-                    </div>
-                    <strong className="recentAmt">{row.amt}</strong>
+              <div className="salesBreakdownList">
+                <div className="breakdownRow">
+                  <div className="breakdownMeta">
+                    <span>UPI &amp; QR Codes (62%)</span>
+                    <b>₹29,915.00</b>
                   </div>
-                ))}
+                  <div className="progressTrack">
+                    <div className="progressFill blue" style={{ width: '62%' }} />
+                  </div>
+                </div>
+
+                <div className="breakdownRow">
+                  <div className="breakdownMeta">
+                    <span>Cash Counter (28%)</span>
+                    <b>₹13,510.00</b>
+                  </div>
+                  <div className="progressTrack">
+                    <div className="progressFill green" style={{ width: '28%' }} />
+                  </div>
+                </div>
+
+                <div className="breakdownRow">
+                  <div className="breakdownMeta">
+                    <span>Card POS Swipe (10%)</span>
+                    <b>₹4,825.00</b>
+                  </div>
+                  <div className="progressTrack">
+                    <div className="progressFill purple" style={{ width: '10%' }} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

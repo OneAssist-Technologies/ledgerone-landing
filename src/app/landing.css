@@ -76,7 +76,7 @@
 
 /* Layout Containers */
 .landing-page .container {
-  width: min(1180px, calc(100% - 48px));
+  width: min(1420px, calc(100% - 40px));
   margin: auto;
 }
 
@@ -97,7 +97,7 @@
 }
 
 .landing-page .nav > div {
-  width: min(1280px, calc(100% - 48px));
+  width: min(1420px, calc(100% - 40px));
   height: 100%;
   margin: auto;
   display: flex;
@@ -275,8 +275,8 @@
 
 .landing-page .heroGrid {
   display: grid;
-  grid-template-columns: 0.95fr 1.05fr;
-  gap: 40px;
+  grid-template-columns: 0.84fr 1.16fr;
+  gap: 36px;
   align-items: center;
 }
 
@@ -2670,229 +2670,333 @@
 
 
 
-/* Sleek, Compact Single-Screen Dashboard Mockup */
-.landing-page .mockCard {
+/* Authentic LedgerOne Enterprise Workspace Mockup */
+.landing-page .mockReal {
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #cbdbee;
   background: #ffffff;
-  box-shadow: 0 20px 50px rgba(13, 39, 89, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 24px 60px rgba(13, 39, 89, 0.14), 0 2px 8px rgba(0, 0, 0, 0.04);
   display: flex;
   flex-direction: column;
 }
 
-.landing-page .mockTitlebar {
-  height: 38px;
-  background: #f1f5f9;
+/* Top App Header */
+.landing-page .mockAppTop {
+  height: 48px;
+  background: #ffffff;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
-}
-
-.landing-page .mockDots {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.landing-page .mockDots .dot {
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-}
-
-.landing-page .mockDots .dot.red { background: #ff5f56; }
-.landing-page .mockDots .dot.yellow { background: #ffbd2e; }
-.landing-page .mockDots .dot.green { background: #27c93f; }
-
-.landing-page .mockTitle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  gap: 12px;
   font-size: 11px;
-  font-weight: 600;
-  color: var(--navy);
 }
 
-.landing-page .mockStatusPill {
-  display: inline-flex;
+.landing-page .mockAppBrand {
+  display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 3px 8px;
-  border-radius: 99px;
-  background: #e6f9f0;
-  color: #107c41;
-  font-size: 10px;
+  gap: 7px;
   font-weight: 700;
-}
-
-.landing-page .mockStatusPill .liveDot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #107c41;
-}
-
-.landing-page .mockGrid {
-  display: grid;
-  grid-template-columns: 48px 1fr;
-  background: #f8fafc;
-}
-
-/* Nav Rail */
-.landing-page .mockNavRail {
-  background: #0d2759;
-  padding: 12px 6px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.landing-page .railLogo {
-  width: 28px;
-  height: 28px;
-  border-radius: 7px;
-  background: var(--blue);
-  color: white;
-  font-size: 10px;
-  font-weight: 800;
-  display: grid;
-  place-items: center;
-  margin-bottom: 4px;
-}
-
-.landing-page .railItem {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  display: grid;
-  place-items: center;
-  color: #88a6d5;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.landing-page .railItem:hover {
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.landing-page .railItem.active {
-  background: rgba(33, 139, 255, 0.25);
-  color: #ffffff;
-}
-
-/* Dashboard Workspace */
-.landing-page .mockDashboard {
-  padding: 14px 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.landing-page .dashHeader {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.landing-page .dashHeader h3 {
-  margin: 0;
-  font-size: 13px;
-  font-weight: 800;
   color: var(--navy);
+  flex-shrink: 0;
+  font-size: 11px;
 }
 
-.landing-page .dashHeader small {
+.landing-page .mockAppBrandLogo {
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #1769f5, #218bff);
+  color: white;
+  display: grid;
+  place-items: center;
+}
+
+.landing-page .mockAppSearch {
+  flex: 1;
+  max-width: 280px;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.landing-page .mockAppSearch svg {
+  position: absolute;
+  left: 9px;
+  color: #94a3b8;
+}
+
+.landing-page .mockAppSearch input {
+  width: 100%;
+  height: 28px;
+  padding: 0 10px 0 26px;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
   font-size: 10px;
-  color: var(--muted);
-  font-weight: 500;
+  color: #1e293b;
+  outline: none;
 }
 
-.landing-page .dashHeaderBtn {
+.landing-page .mockAppActions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.landing-page .mockNewSaleBtn {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 4px 10px;
-  border-radius: 6px;
   background: var(--blue);
   color: white;
   font-size: 10px;
   font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
 }
 
-/* 4 Stat Cards */
-.landing-page .dashStats {
+.landing-page .mockIconBtn {
+  width: 26px;
+  height: 26px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
+  place-items: center;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+  background: white;
+  color: #64748b;
 }
 
-.landing-page .dashStatCard {
-  background: white;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 9px 10px;
+.landing-page .mockUserProfile {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 6px;
+  border-left: 1px solid #e2e8f0;
+}
+
+.landing-page .mockUserAvatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #1769f5;
+  color: white;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.landing-page .mockUserInfo {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  line-height: 1.1;
 }
 
-.landing-page .dashStatCard .statTop {
+.landing-page .mockUserInfo b {
+  font-size: 9.5px;
+  color: var(--navy);
+}
+
+.landing-page .mockUserInfo small {
+  font-size: 7px;
+  color: #64748b;
+  font-weight: 700;
+}
+
+/* App Body: Sidebar + Main Content */
+.landing-page .mockAppBody {
+  display: grid;
+  grid-template-columns: 148px 1fr;
+  background: #f8fafc;
+}
+
+/* Sidebar */
+.landing-page .mockSidebar {
+  background: #ffffff;
+  border-right: 1px solid #e2e8f0;
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.landing-page .mockSidebarGroupTitle {
+  font-size: 7.5px;
+  font-weight: 800;
+  color: #94a3b8;
+  letter-spacing: 0.08em;
+  padding: 6px 8px 2px;
+}
+
+.landing-page .mockSidebarItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 4px;
+  width: 100%;
+  padding: 5px 8px;
+  border-radius: 6px;
+  color: #475569;
+  font-size: 10px;
+  font-weight: 600;
+  text-align: left;
+  border: none;
+  background: transparent;
+  cursor: default;
+  transition: all 0.15s ease;
 }
 
-.landing-page .dashStatCard .statTop small {
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
-  color: var(--muted);
+.landing-page .mockSidebarItemLeft {
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 
-.landing-page .dashStatCard .statTop svg {
+.landing-page .mockSidebarItem.active {
+  background: #eff6ff;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.landing-page .mockSidebarItem.active svg {
   color: var(--blue);
 }
 
-.landing-page .dashStatCard b {
-  font-size: 13px;
-  font-weight: 800;
-  color: var(--navy);
-  line-height: 1.2;
-}
-
-.landing-page .dashStatCard b.alertText {
-  color: #d97706;
-}
-
-.landing-page .dashStatCard .statTrend {
-  font-size: 9px;
-  font-weight: 600;
-  margin-top: 3px;
-}
-
-.landing-page .dashStatCard .statTrend.green { color: #16a875; }
-.landing-page .dashStatCard .statTrend.blue { color: #1769f5; }
-.landing-page .dashStatCard .statTrend.muted { color: #64748b; }
-.landing-page .dashStatCard .statTrend.amber { color: #d97706; }
-
-/* Split Analytics & Recent Activity */
-.landing-page .dashBottom {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+/* Dashboard View */
+.landing-page .mockDashboardView {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 
-.landing-page .dashChartBox,
-.landing-page .dashRecentBox {
+.landing-page .mockDashHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.landing-page .mockDashHeader h3 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.landing-page .mockDashHeader p {
+  margin: 1px 0 0;
+  font-size: 9.5px;
+  color: var(--muted);
+}
+
+.landing-page .mockDashFilters {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.landing-page .mockFilterPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* 8 KPI Cards Grid */
+.landing-page .mockKpiGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 7px;
+}
+
+.landing-page .mockKpiCard {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.landing-page .mockKpiTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3px;
+}
+
+.landing-page .mockKpiTop small {
+  font-size: 7.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.landing-page .kpiIcon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+}
+
+.landing-page .kpiIcon.green { background: #e6f9f0; color: #107c41; }
+.landing-page .kpiIcon.blue { background: #eff6ff; color: #2563eb; }
+.landing-page .kpiIcon.purple { background: #f3e8ff; color: #9333ea; }
+.landing-page .kpiIcon.amber { background: #fef3c7; color: #d97706; }
+.landing-page .kpiIcon.indigo { background: #e0e7ff; color: #4f46e5; }
+.landing-page .kpiIcon.pink { background: #fce7f3; color: #db2777; }
+.landing-page .kpiIcon.orange { background: #ffedd5; color: #ea580c; }
+.landing-page .kpiIcon.teal { background: #ccfbf1; color: #0d9488; }
+
+.landing-page .mockKpiCard b {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  line-height: 1.15;
+}
+
+.landing-page .mockKpiCard b.amberText {
+  color: #d97706;
+}
+
+.landing-page .mockKpiMeta {
+  font-size: 8px;
+  font-weight: 600;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+.landing-page .mockKpiMeta.positive {
+  color: #16a875;
+}
+
+.landing-page .mockKpiMeta.warning {
+  color: #d97706;
+}
+
+/* 2 Analytics Boxes */
+.landing-page .mockAnalyticsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.landing-page .mockAnalyticsBox {
   background: white;
   border: 1px solid #e2e8f0;
   border-radius: 8px;
@@ -2901,113 +3005,127 @@
   flex-direction: column;
 }
 
-.landing-page .boxTitle {
+.landing-page .analyticsHead {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 8px;
 }
 
-.landing-page .boxTitle span {
+.landing-page .analyticsHead b {
   font-size: 10px;
   font-weight: 700;
   color: var(--navy);
+  display: block;
 }
 
-.landing-page .boxTitle small {
-  font-size: 8.5px;
+.landing-page .analyticsHead small {
+  font-size: 8px;
   color: var(--muted);
 }
 
-.landing-page .barChart {
+.landing-page .trendBadge {
+  font-size: 9px;
+  font-weight: 700;
+  color: #107c41;
+  background: #e6f9f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.landing-page .livePill {
+  font-size: 8px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: #eff6ff;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+
+.landing-page .trendBarChart {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-  height: 85px;
-  gap: 6px;
-  padding-top: 6px;
+  height: 75px;
+  gap: 5px;
+  padding-top: 4px;
 }
 
-.landing-page .barCol {
+.landing-page .trendCol {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 3px;
   height: 100%;
 }
 
-.landing-page .barTrack {
+.landing-page .trendTrack {
   width: 100%;
   flex: 1;
   background: #f1f5f9;
-  border-radius: 4px;
+  border-radius: 3px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
 }
 
-.landing-page .barFill {
+.landing-page .trendFill {
   width: 100%;
-  background: linear-gradient(180deg, #218bff, #1769f5);
-  border-radius: 4px 4px 0 0;
-  transition: height 0.4s ease;
+  background: linear-gradient(180deg, #3b82f6, #1d4ed8);
+  border-radius: 3px 3px 0 0;
 }
 
-.landing-page .barCol small {
-  font-size: 7.5px;
+.landing-page .trendCol small {
+  font-size: 7px;
   color: #94a3b8;
   font-weight: 600;
 }
 
-.landing-page .recentList {
+.landing-page .salesBreakdownList {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  justify-content: center;
+  height: 75px;
 }
 
-.landing-page .recentItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 5px 6px;
-  border-radius: 6px;
-  background: #f8fafc;
-}
-
-.landing-page .recentIcon {
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: #e6f9f0;
-  color: #107c41;
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-}
-
-.landing-page .recentMeta {
+.landing-page .breakdownRow {
   display: flex;
   flex-direction: column;
-  flex: 1;
-  line-height: 1.1;
+  gap: 2px;
 }
 
-.landing-page .recentMeta b {
-  font-size: 9px;
-  color: var(--navy);
+.landing-page .breakdownMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 8.5px;
+  color: #475569;
 }
 
-.landing-page .recentMeta small {
-  font-size: 8px;
-  color: var(--muted);
-}
-
-.landing-page .recentAmt {
-  font-size: 10px;
+.landing-page .breakdownMeta b {
   font-weight: 700;
   color: var(--navy);
 }
+
+.landing-page .progressTrack {
+  width: 100%;
+  height: 5px;
+  background: #f1f5f9;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.landing-page .progressFill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.landing-page .progressFill.blue { background: #2563eb; }
+.landing-page .progressFill.green { background: #16a875; }
+.landing-page .progressFill.purple { background: #9333ea; }
 
 /* ==========================================================
    ENHANCED FEATURES & SUB-MODULES GRID (FEATURES SECTION)
@@ -3251,23 +3369,23 @@
   .landing-page .featureSubmoduleGrid {
     grid-template-columns: repeat(2, 1fr);
   }
-  .landing-page .dashStats {
+  .landing-page .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .landing-page .mockKpiGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
-  .landing-page .heroGrid {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-  .landing-page .mockNavRail {
+  .landing-page .mockSidebar {
     display: none;
   }
-  .landing-page .mockGrid {
+  .landing-page .mockAppBody {
     grid-template-columns: 1fr;
   }
-  .landing-page .dashBottom {
+  .landing-page .mockAnalyticsRow {
     grid-template-columns: 1fr;
   }
   .landing-page .featureSubmoduleGrid {
