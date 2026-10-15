@@ -1,10 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import Link from 'next/link';
+import React, { useState, useEffect } from 'react';
 
 const iconPaths = {
-  arrow: <path d="M5 12h14M13 6l6 6-6 6" />,
+  arrow: (
+    <>
+      <path d="M5 12h14M13 6l6 6-6 6" />
+    </>
+  ),
   bag: (
     <>
       <path d="M6 8h12l-1 12H7L6 8Z" />
@@ -57,7 +60,11 @@ const iconPaths = {
       <path d="m3 12 9 5 9-5M3 16l9 5 9-5" />
     </>
   ),
-  menu: <path d="M4 7h16M4 12h16M4 17h16" />,
+  menu: (
+    <>
+      <path d="M4 7h16M4 12h16M4 17h16" />
+    </>
+  ),
   mobile: (
     <>
       <rect x="6" y="2" width="12" height="20" rx="2" />
@@ -119,86 +126,6 @@ const iconPaths = {
       <path d="M14 10h7v5h-7a2.5 2.5 0 0 1 0-5Z" />
     </>
   ),
-  search: (
-    <>
-      <circle cx="11" cy="11" r="8" />
-      <path d="m21 21-4.35-4.35" />
-    </>
-  ),
-  calendar: (
-    <>
-      <rect x="3" y="4" width="18" height="18" rx="2" />
-      <path d="M16 2v4M8 2v4M3 10h18" />
-    </>
-  ),
-  bell: (
-    <>
-      <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
-      <path d="M13.73 21a2 2 0 0 1-3.46 0" />
-    </>
-  ),
-  moon: <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />,
-  plus: <path d="M5 12h14M12 5v14" />,
-  tag: (
-    <>
-      <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" />
-      <circle cx="7" cy="7" r="1.5" />
-    </>
-  ),
-  scale: (
-    <>
-      <path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
-      <path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z" />
-      <path d="M7 21h10" />
-      <path d="M12 3v18" />
-      <path d="M3 7h18" />
-    </>
-  ),
-  bank: (
-    <>
-      <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-      <path d="M9 22V12h6v10" />
-    </>
-  ),
-  wrench: (
-    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-  ),
-  gear: (
-    <>
-      <circle cx="12" cy="12" r="3" />
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z" />
-    </>
-  ),
-  upload: (
-    <>
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="17 8 12 3 7 8" />
-      <line x1="12" y1="3" x2="12" y2="15" />
-    </>
-  ),
-  chevronDown: <polyline points="6 9 12 15 18 9" />,
-  chevronRight: <polyline points="9 18 15 12 9 6" />,
-  chevronLeft: <polyline points="15 18 9 12 15 6" />,
-  cart: (
-    <>
-      <circle cx="8" cy="21" r="1" />
-      <circle cx="19" cy="21" r="1" />
-      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-    </>
-  ),
-  warning: (
-    <>
-      <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-      <line x1="12" y1="9" x2="12" y2="13" />
-      <line x1="12" y1="17" x2="12.01" y2="17" />
-    </>
-  ),
-  trendingUp: (
-    <>
-      <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
-      <polyline points="17 6 23 6 23 12" />
-    </>
-  ),
 };
 
 function Icon({ name, size = 20 }) {
@@ -214,21 +141,33 @@ function Icon({ name, size = 20 }) {
       strokeLinejoin="round"
       aria-hidden="true"
     >
-      {iconPaths[name] || iconPaths.check}
+      {iconPaths[name]}
     </svg>
   );
 }
 
-function Logo({ logoUrl }) {
+function Logo() {
   return (
     <a className="brand" href="#home">
-      <img src={logoUrl} alt="LedgerOne logo" />
+      <img src="/ledgerone/ledgerone-logo.jpg" alt="LedgerOne logo" />
       <span>
         <b>Ledger</b>
         <strong>One</strong>
         <small>BY ONEASSIST TECHNOLOGIES</small>
       </span>
     </a>
+  );
+}
+
+function Btn({ children, href, kind = 'primary', onClick, type = 'button' }) {
+  return href ? (
+    <a className={`btn ${kind}`} href={href}>
+      {children}
+    </a>
+  ) : (
+    <button className={`btn ${kind}`} onClick={onClick} type={type}>
+      {children}
+    </button>
   );
 }
 
@@ -242,483 +181,327 @@ function Title({ eyebrow, title, text }) {
   );
 }
 
-// 8 Core Modules and all 26+ Sub-Modules matching the LedgerOne architecture
-export const modulesData = [
-  {
-    id: 'dashboard',
-    name: 'Dashboard',
-    badge: 'Real-Time Insights',
-    icon: 'chart',
-    description:
-      'Executive command center providing live visibility into daily revenue, gross profit margins, inventory status, low-stock warnings, and performance trends.',
-    submodules: [
-      { name: "Today's Sales", desc: "Live counter and tax invoice revenue tracking with period filters", icon: 'trendingUp', tag: 'Real-Time KPI' },
-      { name: "Today's Estimated Profit", desc: "Gross profit calculations and operational margin visibility", icon: 'wallet', tag: 'Margin KPI' },
-      { name: "Total Products", desc: "In-stock catalog counts, product categories and active valuation", icon: 'box', tag: 'Catalog' },
-      { name: "Low Stock Items", desc: "Automated replenishment warnings for items nearing depleted stock thresholds", icon: 'warning', tag: 'Alert System' },
-      { name: "Total Invoiced", desc: "Cumulative billing overview and pending customer receivables", icon: 'document', tag: 'Receivables' },
-      { name: "Total Customers", desc: "Active customer trading database and credit ledger summaries", icon: 'users', tag: 'CRM Ledger' },
-      { name: "Total Vendors", desc: "Supplier directory and payable obligations tracking", icon: 'building', tag: 'Procurement' },
-      { name: "Today's Orders", desc: "Real-time order count and retail counter checkout volume", icon: 'cart', tag: 'Fulfillment' },
-      { name: "Revenue & Profit Trend", desc: "Interactive performance trend analytics across custom date ranges", icon: 'chart', tag: 'Analytics' },
-      { name: "Today Sales Breakdown", desc: "Detailed breakdown of sales performance by payment method and staff", icon: 'receipt', tag: 'Breakdown' },
+const features = {
+  'Sales & Billing': [
+    [
+      'Retail Sales & Billing',
+      'A dedicated counter-sales flow for product selection, payment and supported receipt output.',
+      'store',
     ],
-  },
-  {
-    id: 'sales-billing',
-    name: 'Sales & Billing',
-    badge: 'Revenue & POS',
-    icon: 'store',
-    description:
-      'Complete revenue engine: rapid retail counter POS billing, customer ledgers, proforma quotes, GST tax invoices, payments collection and promotional discounts.',
-    submodules: [
-      { name: 'Customers', desc: 'Customer profiles with GSTIN, billing addresses, credit limits and statement of accounts', icon: 'users', tag: 'Customer Master' },
-      { name: 'Quotations', desc: 'Itemized commercial quotations with price margins, custom terms, print and PDF export', icon: 'document', tag: 'Estimates' },
-      { name: 'Invoices', desc: 'GST-compliant sales tax invoices with status tracking, thermal printing and WhatsApp sharing', icon: 'receipt', tag: 'GST Invoices' },
-      { name: 'Sales & Billing (POS)', desc: 'Lightning-fast retail counter checkout with barcode scanner support and cash/UPI receipts', icon: 'store', tag: 'Rapid POS' },
-      { name: 'Payments Received', desc: 'Track customer collections across Cash, UPI, Cards, Bank NEFT/RTGS and Cheques', icon: 'wallet', tag: 'Collections' },
-      { name: 'Discounts', desc: 'Line-item percentages, invoice markdowns, festive schemes and customer promotional pricing', icon: 'tag', tag: 'Pricing Rules' },
+    [
+      'Wholesale Invoicing',
+      'Prepare customer invoices with item, pricing and applicable tax details.',
+      'receipt',
     ],
-  },
-  {
-    id: 'purchases',
-    name: 'Purchases',
-    badge: 'Procurement & Payables',
-    icon: 'cart',
-    description:
-      'Procurement operations connecting supplier bills directly into live stock balances, purchase orders and automated vendor payables.',
-    submodules: [
-      { name: 'Vendors', desc: 'Supplier master directory with tax registration, contact info and historical payables', icon: 'building', tag: 'Vendor Directory' },
-      { name: 'Purchases', desc: 'Record incoming supplier bills, purchase orders and automated inventory inward addition', icon: 'bag', tag: 'Inward Billing' },
-      { name: 'Purchase Payments', desc: 'Record outgoing payment vouchers, supplier settlements and monitor payment due dates', icon: 'wallet', tag: 'Payables Ledger' },
+    [
+      'Quotation Management',
+      'Build itemised quotations with clear commercial information.',
+      'document',
     ],
-  },
-  {
-    id: 'inventory',
-    name: 'Inventory',
-    badge: 'Stock & Catalog',
-    icon: 'box',
-    description:
-      'Real-time inventory management with multi-category product master, batch tracking, stock ledger, barcode labels and automated reorder alerts.',
-    submodules: [
-      { name: 'Products', desc: 'Item master catalog with SKU, HSN codes, categories, barcodes, tax rates and unit pricing', icon: 'box', tag: 'Item Master' },
-      { name: 'Inventory', desc: 'Live stock balances, stock adjustment logs, transfer vouchers and low-stock reorder points', icon: 'layers', tag: 'Live Ledger' },
+    [
+      'Customer Collections',
+      'Review eligible invoice collections separately from counter payments.',
+      'wallet',
     ],
-  },
-  {
-    id: 'gst-compliance',
-    name: 'GST & Compliance',
-    badge: 'Statutory & Tax',
-    icon: 'scale',
-    description:
-      'Built-in statutory compliance for Indian businesses including automated GSTR summaries, E-Way bills, tax rates and government E-invoicing.',
-    submodules: [
-      { name: 'GST Returns', desc: 'Automated GSTR-1, GSTR-3B monthly and quarterly summaries ready for direct tax filing', icon: 'report', tag: 'GSTR-1 & 3B' },
-      { name: 'E-Way Bill', desc: 'Generate consignment transport bills with vehicle details, distance and portal export', icon: 'truck', tag: 'NIC E-Way Bill' },
-      { name: 'E-Invoice', desc: 'Real-time B2B e-invoicing with IRN generation and signed official government QR code', icon: 'receipt', tag: 'IRN & QR Code' },
-      { name: 'Tax Rates', desc: 'Pre-configured Indian GST tax slabs (0%, 5%, 12%, 18%, 28%) and custom cess mapping', icon: 'tag', tag: 'Tax Slabs' },
+  ],
+  'Products & Stock': [
+    [
+      'Product Management',
+      'Organise items, categories, pricing and available attributes.',
+      'box',
     ],
-  },
-  {
-    id: 'finance-reports',
-    name: 'Finance & Reports',
-    badge: 'Accounting & Audit',
-    icon: 'bank',
-    description:
-      'End-to-end financial accounting spanning multi-account banking, daily operating expenses, comprehensive P&L and real-time Balance Sheets.',
-    submodules: [
-      { name: 'Banking', desc: 'Manage company bank accounts, track deposits, withdrawals, fund transfers and reconciliations', icon: 'bank', tag: 'Bank Accounts' },
-      { name: 'Expenses', desc: 'Record operating overheads, petty cash vouchers, utility payments and tax expense deductions', icon: 'wallet', tag: 'Expense Logging' },
-      { name: 'Reports', desc: 'Over 20+ granular reports covering Sales, Purchases, Stock Aging, Daybook and Profit & Loss', icon: 'chart', tag: '20+ Reports' },
-      { name: 'Balance Sheet', desc: 'Live financial statement depicting total assets, liabilities, owner equity and business solvency', icon: 'scale', tag: 'Audit Ready' },
+    [
+      'Inventory Tracking',
+      'Follow stock movement created by supported business transactions.',
+      'layers',
     ],
-  },
-  {
-    id: 'tools',
-    name: 'Tools',
-    badge: 'Free Public Tools',
-    icon: 'wrench',
-    description:
-      'Interactive browser-based productivity tools and high-speed data migration utilities available right on the website for public usage.',
-    submodules: [
-      {
-        name: 'Quotation Maker',
-        desc: 'Free interactive browser tool to create, customize and download professional PDF quotes instantly',
-        icon: 'document',
-        tag: 'Free Online Tool',
-        link: '/ledgerone/app/tools/quotation-maker',
-      },
-      {
-        name: 'Invoice Generator',
-        desc: 'Free instant tax invoice generator with automatic GST math, custom branding and PDF export',
-        icon: 'receipt',
-        tag: 'Free Online Tool',
-        link: '/ledgerone/app/tools/invoice-generator',
-      },
-      {
-        name: 'Data Import',
-        desc: 'One-click bulk CSV/Excel import for products, opening inventory, customer and vendor lists',
-        icon: 'upload',
-        tag: 'Bulk Migration',
-      },
+    [
+      'Sales & Purchase Returns',
+      'Record returns through their appropriate stock workflows.',
+      'refresh',
     ],
-  },
-  {
-    id: 'system-settings',
-    name: 'System & Settings',
-    badge: 'Governance & Setup',
-    icon: 'gear',
-    description:
-      'Granular access governance, multi-user role assignments, branch profiles, print layouts and document sequence customization.',
-    submodules: [
-      { name: 'Users', desc: 'Staff account administration with role-based access control (Super Admin, Cashier, Manager, Accountant)', icon: 'users', tag: 'RBAC Security' },
-      { name: 'Settings', desc: 'Company GSTIN profile, multi-branch addresses, thermal print formats and invoice prefix rules', icon: 'gear', tag: 'Configuration' },
+    [
+      'Inventory Reports',
+      'Review available summaries and product movement reports.',
+      'chart',
     ],
-  },
-];
+  ],
+  'Purchasing & Vendors': [
+    [
+      'Purchase Management',
+      'Record purchases and connect incoming items to stock movement.',
+      'bag',
+    ],
+    [
+      'Vendor Records',
+      'Keep vendor information and transaction history together.',
+      'users',
+    ],
+    [
+      'Vendor Payments',
+      'Review purchase-related payments as a distinct business flow.',
+      'wallet',
+    ],
+    [
+      'Purchase Reports',
+      'Understand purchasing activity with operational reports.',
+      'report',
+    ],
+  ],
+  'Reports & Admin': [
+    [
+      'Dashboard Summaries',
+      'See supported business indicators in one operational view.',
+      'chart',
+    ],
+    [
+      'Business Reports',
+      'Review available reports across key transactions.',
+      'report',
+    ],
+    [
+      'Roles & Permissions',
+      'Configure access according to supported business roles.',
+      'shield',
+    ],
+    [
+      'Company Settings',
+      'Manage available company and document configuration.',
+      'building',
+    ],
+  ],
+};
+
+const previews = {
+  Dashboard: [
+    'A clear view of your business day',
+    'Bring operational shortcuts, recent activity, stock visibility and outstanding records into one clean workspace.',
+    'dashboard',
+  ],
+  'Retail Billing': [
+    'Fast, focused counter billing',
+    'Select products, review quantities, record a retail payment and prepare a supported receipt.',
+    'billing',
+  ],
+  'Quotations & Invoices': [
+    'Professional documents, organised',
+    'Prepare detailed customer documents with item, pricing, tax and commercial information.',
+    'invoice',
+  ],
+  'Inventory & Purchasing': [
+    'Purchasing connected to stock',
+    'Record vendor purchases, follow incoming stock movement and review inventory.',
+    'inventory',
+  ],
+  'Collections & Reports': [
+    'Follow eligible outstanding balances',
+    'Keep wholesale invoice collections distinct from counter sales and vendor payments.',
+    'reports',
+  ],
+};
 
 const faqs = [
   [
     'What is LedgerOne?',
-    'LedgerOne is a comprehensive business billing, inventory and operations ERP platform by OneAssist Technologies. It brings together 8 core operational modules and over 26 sub-modules spanning counter sales, purchasing, inventory, GST compliance, banking, and accounting.',
+    'LedgerOne is a business billing, inventory and operations platform by OneAssist Technologies. It connects supported sales, purchasing, stock, customer, vendor and reporting workflows.',
   ],
   [
-    'What modules are included in LedgerOne?',
-    'LedgerOne includes Dashboard & Analytics, Sales & Billing (Customers, Quotations, Invoices, POS, Payments, Discounts), Purchases (Vendors, Purchase Orders, Payments), Inventory (Products, Stock Tracking), GST & Compliance (GST Returns, E-Way Bill, E-Invoice, Tax Rates), Finance & Reports (Banking, Expenses, Reports, Balance Sheet), Tools (Quotation Maker, Invoice Generator, Data Import), and System & Settings (Users, RBAC, Settings).',
+    'Who can use LedgerOne?',
+    'It is positioned for retail shops, wholesalers, distributors and growing businesses that need clearer day-to-day operational records.',
   ],
   [
-    'Can I try creating quotations and invoices for free without an account?',
-    'Yes! You can use our interactive Quotation Maker and Invoice Generator tools for free right here in your browser without logging in. Create professional PDFs with tax calculations instantly.',
+    'How does retail billing differ from wholesale invoicing?',
+    'Retail billing supports counter transactions and immediate payment flows. Wholesale workflows use customer quotations and invoices, with collections reviewed separately.',
   ],
   [
-    'Are my documents GST-compliant?',
-    'Yes. LedgerOne automatically calculates SGST, CGST, and IGST breakdowns according to Indian state tax rules and HSN/SAC specifications, with support for official E-Way Bill and E-Invoicing.',
+    'Can I create quotations and invoices?',
+    'Yes. LedgerOne supports quotation and invoice document workflows. The builder here is a client-side preview and does not post to a company workspace.',
   ],
   [
-    'How do I save my invoices and quotations permanently?',
-    'Simply click "Get Started Free" to register your account. Once registered, all your documents, customer ledger, inventory and payment collections are securely stored in the cloud.',
+    'How do purchases relate to inventory?',
+    'Supported purchase transactions create stock movement, helping teams review incoming products and inventory through a connected process.',
   ],
   [
-    'Can multiple team members access LedgerOne?',
-    'Yes, LedgerOne includes role-based access control (RBAC) so you can assign specialized permissions for billing staff, warehouse managers, accountants, and administrators.',
+    'What tax capabilities are supported?',
+    'Configured tax breakdowns may be displayed. Tax display is not the same as statutory filing or government-portal integration.',
+  ],
+  [
+    'Can multiple staff members use the system?',
+    'Published product information includes role-based access. Exact roles and provisioning should be confirmed during a product demonstration.',
+  ],
+  [
+    'Is a mobile application available?',
+    'LedgerOne has a mobile experience for supported tasks. Availability by module may vary, so confirm current capability with the product team.',
   ],
 ];
 
-// Fixed Enterprise Dashboard Screen Mockup matching LedgerOne's actual software UI
-function Mock() {
+function Mock({ type = 'dashboard' }) {
   return (
-    <div className="mockReal" aria-label="LedgerOne Enterprise Workspace Dashboard">
-      {/* Top Global App Header */}
-      <div className="mockAppTop">
-        <div className="mockAppBrand">
-          <div className="mockAppBrandLogo">
-            <Icon name="box" size={13} />
-          </div>
-          <span>Surya Enterprises &amp; Retail</span>
-          <Icon name="chevronDown" size={11} />
-        </div>
-
-        <div className="mockAppSearch">
-          <Icon name="search" size={12} />
-          <input
-            type="text"
-            readOnly
-            value="Search products, customers, invoices..."
-            aria-label="Search"
-          />
-        </div>
-
-        <div className="mockAppActions">
-          <button className="mockNewSaleBtn" type="button">
-            <Icon name="plus" size={11} /> New Sale
-          </button>
-          <div className="mockIconBtn" title="Calendar">
-            <Icon name="calendar" size={12} />
-          </div>
-          <div className="mockIconBtn" title="Theme">
-            <Icon name="moon" size={12} />
-          </div>
-          <div className="mockIconBtn" title="Notifications">
-            <Icon name="bell" size={12} />
-          </div>
-          <div className="mockUserProfile">
-            <div className="mockUserAvatar">S</div>
-            <div className="mockUserInfo">
-              <b>Store Admin</b>
-              <small>SUPER_ADMIN</small>
+    <div className="mock" aria-hidden="true">
+      <aside>
+        <b>L1</b>
+        {['chart', 'receipt', 'box', 'bag', 'users', 'report'].map((x, i) => (
+          <i
+            className={i === (type === 'inventory' ? 2 : type === 'invoice' ? 1 : 0) ? 'on' : ''}
+            key={x}
+          >
+            <Icon name={x} size={15} />
+          </i>
+        ))}
+      </aside>
+      <div className="mockbody">
+        <header>
+          <span>
+            <small>MY WORKSPACE</small>
+            <b>
+              {type === 'billing'
+                ? 'Retail billing'
+                : type === 'invoice'
+                ? 'Documents'
+                : type === 'inventory'
+                ? 'Inventory overview'
+                : type === 'reports'
+                ? 'Collections'
+                : 'Good morning, Arjun'}
+            </b>
+          </span>
+          <i>AS</i>
+        </header>
+        {type === 'invoice' ? (
+          <div className="paper">
+            <header>
+              <b>QUOTATION</b>
+              <span>#QTN-0248</span>
+            </header>
+            <div className="parties">
+              <span>
+                FROM<b>Northstar Traders</b>
+              </span>
+              <span>
+                PREPARED FOR<b>Aster Retail</b>
+              </span>
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Main Workspace with Sidebar & Content */}
-      <div className="mockAppBody">
-        {/* Left Sidebar Menu */}
-        <aside className="mockSidebar">
-          <div className="mockSidebarItem active">
-            <div className="mockSidebarItemLeft">
-              <Icon name="chart" size={13} />
-              <span>Dashboard</span>
+            <div className="table">
+              <b>Item</b>
+              <b>Qty</b>
+              <b>Amount</b>
+              <span>Product starter pack</span>
+              <span>12</span>
+              <span>₹24,000</span>
+              <span>Delivery & setup</span>
+              <span>1</span>
+              <span>₹4,500</span>
             </div>
+            <strong>Total &nbsp; ₹28,500</strong>
           </div>
-
-          <div className="mockSidebarGroupTitle">SALES &amp; BILLING</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="store" size={13} />
-              <span>Sales &amp; Billing</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-
-          <div className="mockSidebarGroupTitle">PURCHASES</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="bag" size={13} />
-              <span>Purchases</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-
-          <div className="mockSidebarGroupTitle">INVENTORY</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="box" size={13} />
-              <span>Inventory</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-
-          <div className="mockSidebarGroupTitle">GST &amp; COMPLIANCE</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="scale" size={13} />
-              <span>GST &amp; Compliance</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-
-          <div className="mockSidebarGroupTitle">FINANCE &amp; REPORTS</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="building" size={13} />
-              <span>Finance &amp; Reports</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-
-          <div className="mockSidebarGroupTitle">TOOLS</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="wrench" size={13} />
-              <span>Tools</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-
-          <div className="mockSidebarGroupTitle">SYSTEM &amp; SETTINGS</div>
-          <div className="mockSidebarItem">
-            <div className="mockSidebarItemLeft">
-              <Icon name="gear" size={13} />
-              <span>System &amp; Settings</span>
-            </div>
-            <Icon name="chevronDown" size={10} />
-          </div>
-        </aside>
-
-        {/* Dashboard Workspace */}
-        <main className="mockDashboardView">
-          {/* Header Row */}
-          <div className="mockDashHeader">
+        ) : type === 'billing' ? (
+          <div className="pos">
             <div>
-              <h3>Dashboard</h3>
-              <p>Welcome back! Here&apos;s what&apos;s happening today.</p>
+              {['Classic Tee', 'Desk Lamp', 'Travel Bag', 'Notebook'].map((x, i) => (
+                <article key={x}>
+                  <i>{['TS', 'DL', 'TB', 'NB'][i]}</i>
+                  <b>{x}</b>
+                  <small>₹{[799, 1299, 1899, 149][i]}</small>
+                </article>
+              ))}
             </div>
-            <div className="mockDashFilters">
-              <span className="mockFilterPill">
-                <Icon name="calendar" size={11} /> Today <Icon name="chevronDown" size={9} />
-              </span>
-              <span className="mockFilterPill">
-                <Icon name="gear" size={11} /> Customize
-              </span>
-              <span className="mockFilterPill">
-                <Icon name="refresh" size={11} /> Refresh
-              </span>
-            </div>
+            <aside>
+              <b>Current sale</b>
+              <p>
+                Classic Tee × 2 <strong>₹1,598</strong>
+              </p>
+              <p>
+                Desk Lamp × 1 <strong>₹1,299</strong>
+              </p>
+              <h4>
+                Total <b>₹2,897</b>
+              </h4>
+              <button type="button">Complete sale</button>
+            </aside>
           </div>
-
-          {/* 8 KPI Cards (4 x 2) */}
-          <div className="mockKpiGrid">
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TODAY&apos;S SALES</small>
-                <span className="kpiIcon green"><Icon name="chart" size={13} /></span>
-              </div>
-              <b>₹48,250.00</b>
-              <span className="mockKpiMeta positive">↑ +14.2% today</span>
+        ) : (
+          <>
+            <div className="stats">
+              {[
+                ['Today’s sales', '₹24,860', 'chart'],
+                ['Products', type === 'inventory' ? '386 in stock' : '428 items', 'box'],
+                ['Outstanding', '12 records', 'wallet'],
+              ].map(([a, b, c]) => (
+                <article key={a}>
+                  <i>
+                    <Icon name={c} size={15} />
+                  </i>
+                  <small>{a}</small>
+                  <b>{b}</b>
+                  <em>Illustrative data</em>
+                </article>
+              ))}
             </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TODAY&apos;S ESTIMATED PROFIT</small>
-                <span className="kpiIcon blue"><Icon name="wallet" size={13} /></span>
+            <div className="mocklower">
+              <div className="bars">
+                <b>
+                  {type === 'inventory'
+                    ? 'Stock movement'
+                    : type === 'reports'
+                    ? 'Collection overview'
+                    : 'Sales overview'}
+                </b>
+                <section>
+                  {[38, 61, 47, 76, 56, 88, 68].map((x, i) => (
+                    <i key={i} style={{ height: `${x}%` }} />
+                  ))}
+                </section>
               </div>
-              <b>₹14,680.00</b>
-              <span className="mockKpiMeta">30.4% margin</span>
-            </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TOTAL PRODUCTS</small>
-                <span className="kpiIcon purple"><Icon name="box" size={13} /></span>
-              </div>
-              <b>1,248</b>
-              <span className="mockKpiMeta">In stock catalog</span>
-            </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>LOW STOCK ITEMS</small>
-                <span className="kpiIcon amber"><Icon name="shield" size={13} /></span>
-              </div>
-              <b className="amberText">6</b>
-              <span className="mockKpiMeta warning">Needs replenishment</span>
-            </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TOTAL INVOICED</small>
-                <span className="kpiIcon indigo"><Icon name="receipt" size={13} /></span>
-              </div>
-              <b>₹3,84,500.00</b>
-              <span className="mockKpiMeta">Billed receivables</span>
-            </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TOTAL CUSTOMERS</small>
-                <span className="kpiIcon pink"><Icon name="users" size={13} /></span>
-              </div>
-              <b>420</b>
-              <span className="mockKpiMeta">Active directory</span>
-            </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TOTAL VENDORS</small>
-                <span className="kpiIcon orange"><Icon name="building" size={13} /></span>
-              </div>
-              <b>38</b>
-              <span className="mockKpiMeta">Supplier accounts</span>
-            </div>
-
-            <div className="mockKpiCard">
-              <div className="mockKpiTop">
-                <small>TODAY&apos;S ORDERS</small>
-                <span className="kpiIcon teal"><Icon name="store" size={13} /></span>
-              </div>
-              <b>34</b>
-              <span className="mockKpiMeta">POS checkout volume</span>
-            </div>
-          </div>
-
-          {/* 2 Analytics Boxes */}
-          <div className="mockAnalyticsRow">
-            {/* Revenue & Profit Trend */}
-            <div className="mockAnalyticsBox">
-              <div className="analyticsHead">
-                <div>
-                  <b>Revenue &amp; Profit Trend</b>
-                  <small>Today performance</small>
-                </div>
-                <span className="trendBadge">+18.4%</span>
-              </div>
-              <div className="trendBarChart">
-                {[
-                  { h: '38%', t: '9 AM' },
-                  { h: '52%', t: '10 AM' },
-                  { h: '70%', t: '11 AM' },
-                  { h: '88%', t: '12 PM' },
-                  { h: '98%', t: '1 PM' },
-                  { h: '85%', t: '2 PM' },
-                  { h: '62%', t: '3 PM' },
-                  { h: '46%', t: '4 PM' },
-                ].map((bar, idx) => (
-                  <div className="trendCol" key={idx}>
-                    <div className="trendTrack">
-                      <div className="trendFill" style={{ height: bar.h }} />
-                    </div>
-                    <small>{bar.t}</small>
-                  </div>
+              <div className="activity">
+                <b>Recent activity</b>
+                {['Invoice #INV-842', 'Purchase #PUR-291', 'Retail sale #POS-715'].map((x, i) => (
+                  <p key={x}>
+                    <i />
+                    <span>
+                      {x}
+                      <small>{['Aster Retail', 'Bluebay Supplies', 'Counter sale'][i]}</small>
+                    </span>
+                    <b>{['₹12,400', '₹8,720', '₹2,897'][i]}</b>
+                  </p>
                 ))}
               </div>
             </div>
-
-            {/* Today's Sales Breakdown */}
-            <div className="mockAnalyticsBox">
-              <div className="analyticsHead">
-                <div>
-                  <b>Today Sales Breakdown</b>
-                  <small>₹48,250 Total Collected</small>
-                </div>
-                <span className="livePill">Live</span>
-              </div>
-              <div className="salesBreakdownList">
-                <div className="breakdownRow">
-                  <div className="breakdownMeta">
-                    <span>UPI &amp; QR Codes (62%)</span>
-                    <b>₹29,915.00</b>
-                  </div>
-                  <div className="progressTrack">
-                    <div className="progressFill blue" style={{ width: '62%' }} />
-                  </div>
-                </div>
-
-                <div className="breakdownRow">
-                  <div className="breakdownMeta">
-                    <span>Cash Counter (28%)</span>
-                    <b>₹13,510.00</b>
-                  </div>
-                  <div className="progressTrack">
-                    <div className="progressFill green" style={{ width: '28%' }} />
-                  </div>
-                </div>
-
-                <div className="breakdownRow">
-                  <div className="breakdownMeta">
-                    <span>Card POS Swipe (10%)</span>
-                    <b>₹4,825.00</b>
-                  </div>
-                  <div className="progressTrack">
-                    <div className="progressFill purple" style={{ width: '10%' }} />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </main>
+          </>
+        )}
       </div>
     </div>
   );
 }
 
-function Phone({ logoUrl }) {
+function Phone({ large = false }) {
   return (
-    <div className="phone" aria-hidden="true">
-      <div className="speaker" />
+    <div className={`phone ${large ? 'large' : ''}`} aria-hidden="true">
+      <i className="speaker" />
       <header>
-        <img src={logoUrl} alt="Logo" width={22} height={22} />
-        <b>LedgerOne Mobile</b>
+        <img src="/ledgerone/ledgerone-logo.jpg" alt="" />
+        <span>
+          <small>Welcome back</small>
+          <b>LedgerOne</b>
+        </span>
       </header>
-      <div className="phonehero">
-        <small>Total Revenue (MTD)</small>
-        <b>₹3,48,200</b>
+      <div className="balance">
+        <small>Business overview</small>
+        <b>₹48,320</b>
+        <span>Illustrative balance</span>
       </div>
       <div className="quick">
-        <i><Icon name="store" size={17} /> POS</i>
-        <i><Icon name="receipt" size={17} /> Invoice</i>
-        <i><Icon name="box" size={17} /> Stock</i>
-        <i><Icon name="users" size={17} /> Party</i>
+        <i>
+          <Icon name="receipt" size={17} />
+          Sale
+        </i>
+        <i>
+          <Icon name="box" size={17} />
+          Stock
+        </i>
+        <i>
+          <Icon name="users" size={17} />
+          Party
+        </i>
       </div>
       <section>
         <b>Recent activity</b>
@@ -741,14 +524,168 @@ function Phone({ logoUrl }) {
   );
 }
 
+function Builder({ kind, close }) {
+  const [business, setBusiness] = useState('Your Business');
+  const [customer, setCustomer] = useState('Customer Name');
+  const [item, setItem] = useState('Product or service');
+  const [qty, setQty] = useState(1);
+  const [price, setPrice] = useState(1000);
+  const [tax, setTax] = useState(0);
+
+  const subtotal = Math.max(0, qty) * Math.max(0, price);
+  const taxTotal = (subtotal * Math.max(0, tax)) / 100;
+  const total = subtotal + taxTotal;
+
+  return (
+    <div className="backdrop" onMouseDown={close}>
+      <div
+        className="builder"
+        role="dialog"
+        aria-modal="true"
+        onMouseDown={(e) => e.stopPropagation()}
+      >
+        <header>
+          <span>
+            <small>CLIENT-SIDE PREVIEW</small>
+            <h2>{kind} Builder</h2>
+          </span>
+          <button onClick={close} aria-label="Close" type="button">
+            <Icon name="close" />
+          </button>
+        </header>
+        <div className="buildergrid">
+          <form onSubmit={(e) => e.preventDefault()}>
+            <label>
+              Business name
+              <input value={business} onChange={(e) => setBusiness(e.target.value)} />
+            </label>
+            <label>
+              Customer name
+              <input value={customer} onChange={(e) => setCustomer(e.target.value)} />
+            </label>
+            <label>
+              Item description
+              <input value={item} onChange={(e) => setItem(e.target.value)} />
+            </label>
+            <div className="fields">
+              <label>
+                Quantity
+                <input
+                  type="number"
+                  min="0"
+                  value={qty}
+                  onChange={(e) => setQty(+e.target.value)}
+                />
+              </label>
+              <label>
+                Unit price (₹)
+                <input
+                  type="number"
+                  min="0"
+                  value={price}
+                  onChange={(e) => setPrice(+e.target.value)}
+                />
+              </label>
+              <label>
+                Tax rate (%)
+                <input
+                  type="number"
+                  min="0"
+                  value={tax}
+                  onChange={(e) => setTax(+e.target.value)}
+                />
+              </label>
+            </div>
+            <p>
+              <Icon name="shield" size={16} /> This preview does not post transactions, alter stock or
+              connect to a company workspace.
+            </p>
+          </form>
+          <article className="document">
+            <header>
+              <span>
+                <img src="/ledgerone/ledgerone-logo.jpg" alt="" />
+                <b>{business || 'Your Business'}</b>
+              </span>
+              <strong>{kind.toUpperCase()}</strong>
+            </header>
+            <div className="docmeta">
+              <span>
+                PREPARED FOR<b>{customer || 'Customer Name'}</b>
+              </span>
+              <span>
+                {kind.toUpperCase()} NO.<b>{kind === 'Invoice' ? 'INV-001' : 'QTN-001'}</b>
+              </span>
+            </div>
+            <div className="docline head">
+              <span>Description</span>
+              <span>Qty</span>
+              <span>Rate</span>
+              <span>Amount</span>
+            </div>
+            <div className="docline">
+              <span>{item}</span>
+              <span>{qty}</span>
+              <span>₹{price.toLocaleString('en-IN')}</span>
+              <span>₹{subtotal.toLocaleString('en-IN')}</span>
+            </div>
+            <div className="totals">
+              <p>
+                Subtotal <b>₹{subtotal.toLocaleString('en-IN')}</b>
+              </p>
+              <p>
+                Tax ({tax}%) <b>₹{taxTotal.toLocaleString('en-IN')}</b>
+              </p>
+              <p>
+                Grand total <strong>₹{total.toLocaleString('en-IN')}</strong>
+              </p>
+            </div>
+            <small>Illustrative document preview</small>
+          </article>
+        </div>
+        <footer>
+          <Btn kind="outline" onClick={() => window.print()}>
+            Print / save as PDF
+          </Btn>
+          <Btn
+            onClick={() => {
+              setBusiness('Your Business');
+              setCustomer('Customer Name');
+              setItem('Product or service');
+              setQty(1);
+              setPrice(1000);
+              setTax(0);
+            }}
+          >
+            <Icon name="refresh" size={17} />
+            Start new
+          </Btn>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
 export default function LandingView() {
   const [menu, setMenu] = useState(false);
-  const [featureModule, setFeatureModule] = useState('sales-billing');
+  const [feature, setFeature] = useState('Sales & Billing');
+  const [preview, setPreview] = useState('Dashboard');
   const [faq, setFaq] = useState(0);
+  const [builder, setBuilder] = useState(null);
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
 
-  const logoUrl = '/ledgerone-logo.jpg';
+  useEffect(() => {
+    document.title = 'LedgerOne | Billing, Inventory & Business Management Software';
+    const description =
+      document.querySelector('meta[name="description"]') ??
+      document.head.appendChild(document.createElement('meta'));
+    description.setAttribute('name', 'description');
+    description.setAttribute(
+      'content',
+      'Manage retail billing, wholesale quotations and invoices, purchases, inventory, customer collections and business reports with LedgerOne.'
+    );
+  }, []);
 
   function submit(e) {
     e.preventDefault();
@@ -757,26 +694,24 @@ export default function LandingView() {
     ['name', 'business', 'email', 'phone', 'type', 'need'].forEach((x) => {
       if (!String(d.get(x) || '').trim()) next[x] = 'Required';
     });
-    if (d.get('email') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(d.get('email')))) {
+    if (d.get('email') && !/^[^s@]+@[^s@]+.[^s@]+$/.test(String(d.get('email')))) {
       next.email = 'Enter a valid email';
     }
     setErrors(next);
     if (!Object.keys(next).length) setSent(true);
   }
 
-  const activeFeatureModuleData = modulesData.find((m) => m.id === featureModule) || modulesData[1];
-
   return (
-    <div className="landing-page app">
-      {/* Navigation Bar */}
+    <div className="app">
+      {/* Navigation Header with Login & Register Buttons */}
       <header className="nav">
         <div>
-          <Logo logoUrl={logoUrl} />
+          <Logo />
           <nav className={menu ? 'open' : ''}>
             {[
               ['home', 'Home'],
-              ['modules', 'Modules'],
               ['tools', 'Tools'],
+              ['workflows', 'Workflows'],
               ['features', 'Features'],
               ['solutions', 'Solutions'],
               ['mobile', 'Mobile App'],
@@ -787,20 +722,18 @@ export default function LandingView() {
               </a>
             ))}
           </nav>
-
-          <div className="navActions">
-            <a href="/ledgerone/app/login" className="btn outline">
+          <section>
+            <a href="/ledgerone/app/login" className="btn outline" style={{ minHeight: '40px', padding: '0 16px', fontSize: '13px' }}>
               Login
             </a>
-            <a href="/ledgerone/app/signup" className="btn">
+            <Btn href="/ledgerone/app/signup">
               Get Started Free <Icon name="arrow" size={17} />
-            </a>
-          </div>
-
+            </Btn>
+          </section>
           <button
-            aria-label="Toggle menu"
-            className="burger"
-            onClick={() => setMenu((v) => !v)}
+            className="menubtn"
+            onClick={() => setMenu(!menu)}
+            aria-label="Toggle navigation"
             type="button"
           >
             <Icon name={menu ? 'close' : 'menu'} />
@@ -815,7 +748,7 @@ export default function LandingView() {
             <div className="heroCopy">
               <span className="pill">
                 <Icon name="spark" size={15} />
-                ALL-IN-ONE BUSINESS ERP &amp; BILLING PLATFORM
+                BUSINESS BILLING &amp; MANAGEMENT SOFTWARE
               </span>
               <h1>
                 Your Business.
@@ -825,71 +758,81 @@ export default function LandingView() {
                 <em>Simplified.</em>
               </h1>
               <p>
-                Unify front-counter POS billing, quotations, wholesale tax invoices, supplier purchases,
-                connected inventory, GST compliance and real-time Balance Sheets in one seamless software suite.
+                Manage retail billing, wholesale quotations and invoices, purchases, inventory and
+                customer collections in one organised workspace.
               </p>
               <div className="actions">
-                <a href="/ledgerone/app/signup" className="btn">
+                <Btn href="/ledgerone/app/signup">
                   Get Started Free <Icon name="arrow" size={18} />
-                </a>
-                <a href="#demo" className="btn light">
+                </Btn>
+                <Btn href="#demo" kind="outline">
                   Request a Demo
-                </a>
+                </Btn>
               </div>
               <a className="textlink" href="#tools">
-                Try free Quotation &amp; Invoice tools <Icon name="arrow" size={17} />
+                Explore document tools <Icon name="arrow" size={17} />
               </a>
-
               <div className="trust">
                 <span>
                   <Icon name="check" size={14} />
-                  8 Core ERP Modules
+                  Retail &amp; wholesale
                 </span>
                 <span>
                   <Icon name="check" size={14} />
-                  26+ Sub-Modules
+                  Connected stock
                 </span>
                 <span>
                   <Icon name="check" size={14} />
-                  GST &amp; E-Way Bill Ready
-                </span>
-                <span>
-                  <Icon name="check" size={14} />
-                  Multi-User RBAC
+                  Role-based access
                 </span>
               </div>
-
-
             </div>
 
-            {/* Hero Visual Mockup */}
             <div className="heroVisual">
               <Mock />
+              <Phone />
+              <div className="float f1">
+                <Icon name="receipt" size={18} />
+                <span>
+                  <small>INVOICE STATUS</small>
+                  <b>Payment recorded</b>
+                </span>
+                <Icon name="check" size={15} />
+              </div>
+              <div className="float f2">
+                <Icon name="box" size={18} />
+                <span>
+                  <small>STOCK UPDATE</small>
+                  <b>Purchase received</b>
+                </span>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Free Interactive Document Tools */}
+        {/* Practical Business Document Tools */}
         <section className="section tools" id="tools">
           <div className="container">
             <Title
-              eyebrow="PRACTICAL BUSINESS UTILITIES"
-              title="Create Business Documents in Minutes — 100% Free"
-              text="Prepare professional quotations and invoices using LedgerOne’s interactive tools right in your browser without logging in."
+              eyebrow="PRACTICAL BUSINESS TOOLS"
+              title="Create Business Documents in Minutes"
+              text="Prepare professional quotations and invoices using LedgerOne’s available document-generation preview tools."
             />
             <div className="toolgrid">
               {[
                 [
                   'Quotation',
                   'Quotation Maker',
-                  'Prepare itemised quotations with customer details, product quantities, unit pricing, applicable tax rates and commercial terms.',
+                  'Prepare itemised quotations with customer details, product quantities, pricing, applicable tax details and commercial terms.',
                   'document',
+                  '/ledgerone/app/tools/quotation-maker',
                 ],
                 [
                   'Invoice',
                   'Invoice Generator',
-                  'Create a clear professional tax invoice preview with itemised document details, GST calculations and instant PDF export.',
+                  'Create a clear professional invoice preview with itemised document details and consistent totals.',
                   'receipt',
+                  '/ledgerone/app/tools/invoice-generator',
                 ],
               ].map((x, i) => (
                 <article className="toolcard" key={x[0]}>
@@ -899,12 +842,20 @@ export default function LandingView() {
                   <small>0{i + 1}</small>
                   <h3>{x[1]}</h3>
                   <p>{x[2]}</p>
-                  <a
-                    href={i ? '/ledgerone/app/tools/invoice-generator' : '/ledgerone/app/tools/quotation-maker'}
-                  >
-                    {i ? 'Generate an Invoice Now' : 'Create a Quotation Now'}{' '}
-                    <Icon name="arrow" size={18} />
-                  </a>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px', alignItems: 'center' }}>
+                    <button
+                      onClick={() => setBuilder(x[0])}
+                      type="button"
+                    >
+                      {i ? 'Generate an Invoice' : 'Create a Quotation'} <Icon name="arrow" size={18} />
+                    </button>
+                    <a
+                      href={x[4]}
+                      style={{ fontSize: '12px', color: 'var(--blue)', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '4px' }}
+                    >
+                      Open Full Screen Tool &rarr;
+                    </a>
+                  </div>
                   <div className="minipaper">
                     <b>{x[0].toUpperCase()}</b>
                     <span />
@@ -917,273 +868,478 @@ export default function LandingView() {
             </div>
             <p className="honest">
               <Icon name="shield" size={16} />
-              Tools run instantly in your browser. Register an account to save records permanently and track customer payments.
+              Previews run locally in your browser. Register an account to save records permanently and track customer payments.
             </p>
           </div>
         </section>
 
-        {/* Features & Sub-modules Deep Dive */}
-        <div id="modules" />
-        <section className="section features" id="features">
+        {/* Why LedgerOne / Clarity Section */}
+        <section className="section clarity">
           <div className="container">
             <Title
-              eyebrow="FULL ERP CAPABILITIES"
-              title="Every Module & Sub-Module Built for Real Operations"
-              text="Explore all 8 integrated modules and 26+ specialized sub-modules engineered to automate your trade from counter sales to statutory tax filings."
+              eyebrow="WHY LEDGERONE"
+              title="Less Manual Work. More Business Clarity."
+              text="Keep the records behind your daily operations structured, connected and easier to follow."
             />
-
-            {/* Category Selector Bar */}
-            <div className="featuresCategoryBar">
-              {modulesData.map((m) => (
-                <button
-                  className={`featureCategoryBtn ${featureModule === m.id ? 'active' : ''}`}
-                  key={m.id}
-                  onClick={() => setFeatureModule(m.id)}
-                  type="button"
-                >
-                  <Icon name={m.icon} size={15} />
-                  {m.name}
-                  <span className="countBadge">{m.submodules.length}</span>
-                </button>
-              ))}
-            </div>
-
-            {/* Sub-modules Feature Grid */}
-            <div className="featureSubmoduleGrid">
-              {activeFeatureModuleData.submodules.map((sub, i) => (
-                <article className="submoduleCard" key={i}>
-                  <div className="submoduleCardHead">
-                    <div className="submoduleCardIcon">
-                      <Icon name={sub.icon} size={22} />
-                    </div>
-                    <span className="submoduleBadge">{sub.tag}</span>
-                  </div>
-                  <h3>{sub.name}</h3>
-                  <p>{sub.desc}</p>
-                  <div className="submoduleCardFooter">
-                    <span className="submoduleRoleTag">
-                      <Icon name="check" size={12} /> {activeFeatureModuleData.name}
-                    </span>
-                    {sub.link && (
-                      <Link href={sub.link} className="submoduleLink">
-                        Try Online <Icon name="arrow" size={13} />
-                      </Link>
-                    )}
-                  </div>
+            <div className="claritygrid">
+              {[
+                [
+                  'Organised Business Records',
+                  'Keep product, customer, vendor and transaction information within connected workflows.',
+                  'layers',
+                ],
+                [
+                  'Separate Sales Workflows',
+                  'Use distinct processes for retail counter billing and wholesale invoicing.',
+                  'store',
+                ],
+                [
+                  'Clearer Outstanding Follow-up',
+                  'Review eligible customer collections and outstanding invoice balances.',
+                  'wallet',
+                ],
+                [
+                  'Better Stock Visibility',
+                  'Understand how purchases, sales and returns affect stock movement.',
+                  'box',
+                ],
+              ].map((x, i) => (
+                <article key={x[0]}>
+                  <small>0{i + 1}</small>
+                  <i>
+                    <Icon name={x[2]} size={25} />
+                  </i>
+                  <h3>{x[0]}</h3>
+                  <p>{x[1]}</p>
                 </article>
               ))}
-            </div>
-
-            {/* Enterprise Architecture Summary Matrix */}
-            <div className="architectureMatrix">
-              <div className="architectureMatrixHead">
-                <h3>Enterprise Modules &amp; Sub-Modules Architecture</h3>
-                <p>
-                  A complete operational blueprint of what you can control and automate within LedgerOne ERP.
-                </p>
-              </div>
-              <div className="matrixTableWrapper">
-                <table className="matrixTable">
-                  <thead>
-                    <tr>
-                      <th>Module</th>
-                      <th>Included Sub-Modules</th>
-                      <th>Operational Purpose</th>
-                      <th>Compliance / Standard</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {modulesData.map((m) => (
-                      <tr key={m.id}>
-                        <td>
-                          <span className="matrixModuleName">
-                            <Icon name={m.icon} size={16} />
-                            {m.name}
-                          </span>
-                        </td>
-                        <td>
-                          <div className="matrixSubmodulesList">
-                            {m.submodules.map((sub, idx) => (
-                              <span className="matrixSubmoduleChip" key={idx}>
-                                {sub.name}
-                              </span>
-                            ))}
-                          </div>
-                        </td>
-                        <td>{m.description}</td>
-                        <td>
-                          <span className="submoduleBadge">{m.badge}</span>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Solutions Grid */}
+        {/* Workflows Section */}
+        <section className="section workflows" id="workflows">
+          <div className="container">
+            <Title
+              eyebrow="CONNECTED OPERATIONS"
+              title="Your Daily Business Workflows, Connected"
+              text="Understand how products, purchases, sales and collections fit together—without mixing distinct payment flows."
+            />
+            <div className="flowlist">
+              {[
+                [
+                  '01',
+                  'Product to stock',
+                  'Maintain product records, record purchases and follow stock movement.',
+                  [
+                    ['Product', 'box'],
+                    ['Purchase', 'bag'],
+                    ['Stock movement', 'layers'],
+                    ['Inventory review', 'chart'],
+                  ],
+                ],
+                [
+                  '02',
+                  'Wholesale sale to collection',
+                  'Prepare customer documents and track eligible collections against outstanding balances.',
+                  [
+                    ['Customer', 'users'],
+                    ['Quotation', 'document'],
+                    ['Invoice', 'receipt'],
+                    ['Collection', 'wallet'],
+                    ['Outstanding', 'eye'],
+                  ],
+                ],
+                [
+                  '03',
+                  'Retail billing',
+                  'Use a dedicated retail sales flow for counter transactions and supported receipts.',
+                  [
+                    ['Product selection', 'box'],
+                    ['Retail sale', 'store'],
+                    ['Counter payment', 'wallet'],
+                    ['Receipt', 'file'],
+                  ],
+                ],
+              ].map((row) => (
+                <article key={row[0]}>
+                  <div className="flowcopy">
+                    <small>{row[0]}</small>
+                    <h3>{row[1]}</h3>
+                    <p>{row[2]}</p>
+                  </div>
+                  <div className="steps">
+                    {row[3].map((s, i) => (
+                      <section key={s[0]}>
+                        <div>
+                          <i>
+                            <Icon name={s[1]} size={21} />
+                          </i>
+                          <b>{s[0]}</b>
+                        </div>
+                        {i < row[3].length - 1 && <Icon name="arrow" size={19} />}
+                      </section>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="note">
+              <Icon name="shield" />
+              <p>
+                <b>Clear by design:</b> retail counter payments, wholesale customer collections and
+                purchase-related vendor payments remain separate flows.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Module Explorer Tabs Section */}
+        <section className="section featureSection" id="features">
+          <div className="container">
+            <Title
+              eyebrow="MODULE EXPLORER"
+              title="Everything Your Daily Operations Need"
+              text="Explore supported workflows across billing, inventory, purchasing, reporting and administration."
+            />
+            <div className="tabs">
+              {Object.keys(features).map((x) => (
+                <button
+                  className={feature === x ? 'active' : ''}
+                  onClick={() => setFeature(x)}
+                  key={x}
+                  type="button"
+                >
+                  {x}
+                </button>
+              ))}
+            </div>
+            <div className="featuregrid">
+              {features[feature].map((x, i) => (
+                <article className={i === 0 ? 'featured' : ''} key={x[0]}>
+                  <i>
+                    <Icon name={x[2]} size={24} />
+                  </i>
+                  <h3>{x[0]}</h3>
+                  <p>{x[1]}</p>
+                  <span>
+                    <Icon name="arrow" size={17} />
+                  </span>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Product Experience Showcase Section */}
+        <section className="section showcase">
+          <div className="container">
+            <Title
+              eyebrow="PRODUCT EXPERIENCE"
+              title="See LedgerOne in Action"
+              text="Explore illustrative previews built from documented product concepts. Demo records below are fictional."
+            />
+            <div className="previewtabs">
+              {Object.keys(previews).map((x) => (
+                <button
+                  className={preview === x ? 'active' : ''}
+                  onClick={() => setPreview(x)}
+                  key={x}
+                  type="button"
+                >
+                  {x}
+                </button>
+              ))}
+            </div>
+            <div className="showframe">
+              <div>
+                <small>0{Object.keys(previews).indexOf(preview) + 1}</small>
+                <h3>{previews[preview][0]}</h3>
+                <p>{previews[preview][1]}</p>
+                <ul>
+                  {['Focused operational workspace', 'Clear, readable records', 'Designed for daily use'].map(
+                    (x) => (
+                      <li key={x}>
+                        <Icon name="check" size={15} />
+                        {x}
+                      </li>
+                    )
+                  )}
+                </ul>
+                <Btn href="#demo" kind="light">
+                  See it in a demo <Icon name="arrow" size={17} />
+                </Btn>
+              </div>
+              <section>
+                <Mock type={previews[preview][2]} />
+              </section>
+            </div>
+          </div>
+        </section>
+
+        {/* Solutions Section */}
         <section className="section solutions" id="solutions">
           <div className="container">
             <Title
-              eyebrow="BUSINESS FIT"
-              title="Tailored for Growing Enterprises Across India"
-              text="Whether running a retail counter, wholesale distributorship, manufacturing plant, or service enterprise, LedgerOne adapts to your workflow."
+              eyebrow="BUILT FOR BUSINESS"
+              title="A Better Fit for the Way You Operate"
+              text="Distinct workflows for different business models, with the records connecting them kept in view."
             />
             <div className="solutiongrid">
               {[
                 [
-                  'Retail Shops & Counters',
-                  'Fast counter billing workflow with quick product barcode lookups, thermal receipts, cash drawers, and instant UPI payment reconciliation.',
+                  'RETAIL SHOPS',
+                  'Keep Counter Billing Organised',
+                  'Use a focused retail sales flow with product records, counter payment and supported receipt output.',
                   'store',
                 ],
                 [
-                  'Wholesalers & Distributors',
-                  'Commercial quotations with volume discounts, custom credit terms, automated GST tax invoices, and customer payment collection ledgers.',
+                  'WHOLESALERS & DISTRIBUTORS',
+                  'Manage Quotations, Invoices and Collections',
+                  'Organise customer documents and follow eligible collections against outstanding balances.',
                   'truck',
                 ],
                 [
-                  'Service Providers & Agencies',
-                  'Itemized milestone billing, formal quotation terms, bank payment details, and real-time Profit & Loss accounting.',
-                  'document',
-                ],
-                [
-                  'Multi-Branch Enterprises',
-                  'Centralized warehouse inventory tracking, role-based user management (RBAC), and consolidated audit-ready Balance Sheets.',
+                  'GROWING BUSINESSES',
+                  'Bring Purchases, Stock and Reports Together',
+                  'Connect vendor records, purchase activity, stock movement and available reports.',
                   'building',
                 ],
-              ].map((s, idx) => (
-                <article key={idx}>
-                  <i>
-                    <Icon name={s[2]} size={24} />
-                  </i>
-                  <h3>{s[0]}</h3>
-                  <p>{s[1]}</p>
+              ].map((x) => (
+                <article key={x[0]}>
+                  <header>
+                    <span>{x[0]}</span>
+                    <Icon name={x[3]} size={29} />
+                  </header>
+                  <h3>{x[1]}</h3>
+                  <p>{x[2]}</p>
+                  <a href="#workflows">
+                    Explore workflow <Icon name="arrow" size={17} />
+                  </a>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Mobile Showcase */}
-        <section className="section mobile" id="mobile">
+        {/* Mobile Section */}
+        <section className="section mobileSection" id="mobile">
           <div className="container mobilegrid">
-            <div className="mobilecopy">
-              <span>CONNECTED ON THE MOVE</span>
-              <h2>Run Your Enterprise from Any Screen</h2>
-              <p>
-                Monitor counter receipts, approve supplier purchase bills, verify stock counts, and check daily revenue summaries whether in your store or on the move.
-              </p>
-              <ul>
-                <li><Icon name="check" size={16} /> Live dashboard revenue and gross margin summaries</li>
-                <li><Icon name="check" size={16} /> Mobile-ready billing and quick quotation generation</li>
-                <li><Icon name="check" size={16} /> Real-time low stock replenishment alerts</li>
-                <li><Icon name="check" size={16} /> Cloud synchronization with zero data loss</li>
-              </ul>
-              <div className="actions">
-                <a href="/ledgerone/app/signup" className="btn">
-                  Create Free Account <Icon name="arrow" size={18} />
-                </a>
-              </div>
-            </div>
             <div className="mobilevisual">
-              <Phone logoUrl={logoUrl} />
+              <div />
+              <Phone large />
+              <aside className="mfloat one">
+                <Icon name="check" size={16} />
+                <span>
+                  <b>Sale recorded</b>
+                  <small>Retail workflow</small>
+                </span>
+              </aside>
+              <aside className="mfloat two">
+                <Icon name="box" size={18} />
+                <span>
+                  <b>Stock overview</b>
+                  <small>Within reach</small>
+                </span>
+              </aside>
+            </div>
+            <div className="mobilecopy">
+              <span>LEDGERONE MOBILE</span>
+              <h2>
+                Your Business,
+                <br />
+                <em>Within Reach</em>
+              </h2>
+              <p>
+                Explore the LedgerOne mobile experience for supported business tasks. Stay close to
+                key records and day-to-day activity when you’re away from your desk.
+              </p>
+              <section>
+                <div>
+                  <i>
+                    <Icon name="eye" />
+                  </i>
+                  <span>
+                    <b>Quick visibility</b>
+                    <small>Review supported operational information in a clear mobile layout.</small>
+                  </span>
+                </div>
+                <div>
+                  <i>
+                    <Icon name="spark" />
+                  </i>
+                  <span>
+                    <b>Simple interactions</b>
+                    <small>
+                      Navigate common mobile tasks without carrying a desktop workflow everywhere.
+                    </small>
+                  </span>
+                </div>
+              </section>
+              <div className="actions">
+                <Btn href="#demo">
+                  Explore the mobile app <Icon name="arrow" size={17} />
+                </Btn>
+                <Btn href="#demo" kind="outline">
+                  Request a demo
+                </Btn>
+              </div>
+              <small className="availability">
+                Feature availability may vary by module and release. Confirm current mobile capability with the
+                product team.
+              </small>
             </div>
           </div>
         </section>
 
-        {/* Frequently Asked Questions */}
+        {/* FAQ Section */}
         <section className="section faq" id="faq">
-          <div className="container">
-            <Title
-              eyebrow="FREQUENTLY ASKED QUESTIONS"
-              title="Everything You Need to Know"
-              text="Common answers about LedgerOne modules, public tools, GST compliance, and enterprise features."
-            />
-            <div className="faqgrid">
-              {faqs.map((f, i) => (
-                <div
-                  className={`faqitem ${faq === i ? 'open' : ''}`}
-                  key={i}
-                  onClick={() => setFaq(faq === i ? -1 : i)}
-                >
-                  <button type="button">
-                    <b>{f[0]}</b>
-                    <Icon name={faq === i ? 'close' : 'plus'} size={18} />
+          <div className="container faqgrid">
+            <div className="faqintro">
+              <span>FREQUENTLY ASKED</span>
+              <h2>Questions, Answered Clearly.</h2>
+              <p>Understand the core workflows and where to confirm release-specific capabilities.</p>
+              <article>
+                <Icon name="users" size={25} />
+                <span>
+                  <b>Still have a question?</b>
+                  <small>Walk through your requirements with the LedgerOne team.</small>
+                </span>
+                <a href="#demo">
+                  Talk to us <Icon name="arrow" size={15} />
+                </a>
+              </article>
+            </div>
+            <div>
+              {faqs.map((x, i) => (
+                <article className="faqitem" key={x[0]}>
+                  <button
+                    onClick={() => setFaq(faq === i ? -1 : i)}
+                    aria-expanded={faq === i}
+                    type="button"
+                  >
+                    <span>{x[0]}</span>
+                    <i>{faq === i ? '−' : '+'}</i>
                   </button>
-                  {faq === i && <p>{f[1]}</p>}
-                </div>
+                  {faq === i && <p>{x[1]}</p>}
+                </article>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Request a Demo Form */}
+        {/* Request a Demo Section */}
         <section className="section demo" id="demo">
           <div className="container demogrid">
             <div className="democopy">
-              <span>SCHEDULE A PERSONALIZED WALKTHROUGH</span>
-              <h2>Ready to Simplify Your Business Operations?</h2>
+              <span>PERSONALISED PRODUCT WALKTHROUGH</span>
+              <h2>
+                See How LedgerOne
+                <br />
+                Fits Your Business
+              </h2>
               <p>
-                Speak with our ERP specialists to see how LedgerOne’s 8 modules and 26+ sub-modules can be tailored to your specific retail, wholesale or distribution setup.
+                Walk through your billing, purchasing, inventory and collection workflows with the
+                LedgerOne team.
               </p>
-              <div className="demotrust">
-                <span><Icon name="check" size={14} /> Free guided demo</span>
-                <span><Icon name="check" size={14} /> Custom onboarding assistance</span>
-                <span><Icon name="check" size={14} /> Full data migration support</span>
-              </div>
+              <ul>
+                {[
+                  'Discuss your current processes',
+                  'Explore relevant LedgerOne workflows',
+                  'Clarify setup and release-specific features',
+                ].map((x) => (
+                  <li key={x}>
+                    <Icon name="check" size={15} />
+                    {x}
+                  </li>
+                ))}
+              </ul>
+              <a href="https://oneassist.net.in/contact" target="_blank" rel="noreferrer">
+                Visit the official OneAssist contact page <Icon name="arrow" size={16} />
+              </a>
             </div>
-
-            <div className="demoform">
+            <div className="democard">
               {sent ? (
-                <div className="demosuccess">
-                  <Icon name="check" size={32} />
-                  <h3>Thank you for reaching out!</h3>
-                  <p>Our product specialist will contact you within 24 hours.</p>
+                <div className="success">
+                  <i>
+                    <Icon name="check" size={30} />
+                  </i>
+                  <h3>Your request is ready for integration</h3>
+                  <p>
+                    Your details passed local validation. Our team will contact you shortly to schedule
+                    your personalized walkthrough.
+                  </p>
+                  <Btn kind="outline" onClick={() => setSent(false)}>
+                    Submit another request
+                  </Btn>
                 </div>
               ) : (
-                <form onSubmit={submit}>
-                  <h3>Schedule Your Free Demo</h3>
-                  <div className="formgroup">
-                    <label>Full Name</label>
-                    <input name="name" type="text" placeholder="e.g. Nitheesh" />
-                    {errors.name && <small>{errors.name}</small>}
+                <form onSubmit={submit} noValidate>
+                  <h3>Request a demo</h3>
+                  <p>Tell us a little about your business.</p>
+                  <div className="fields">
+                    <label>
+                      Full name *
+                      <input name="name" placeholder="Your full name" />
+                      {errors.name && <small>{errors.name}</small>}
+                    </label>
+                    <label>
+                      Business name *
+                      <input name="business" placeholder="Company or shop name" />
+                      {errors.business && <small>{errors.business}</small>}
+                    </label>
                   </div>
-                  <div className="formgroup">
-                    <label>Business Name</label>
-                    <input name="business" type="text" placeholder="e.g. Kongu Engineering" />
-                    {errors.business && <small>{errors.business}</small>}
-                  </div>
-                  <div className="formrow">
-                    <div className="formgroup">
-                      <label>Email Address</label>
-                      <input name="email" type="email" placeholder="name@company.com" />
+                  <div className="fields">
+                    <label>
+                      Email address *
+                      <input name="email" type="email" placeholder="you@business.com" />
                       {errors.email && <small>{errors.email}</small>}
-                    </div>
-                    <div className="formgroup">
-                      <label>Phone Number</label>
-                      <input name="phone" type="tel" placeholder="+91 98765 43210" />
+                    </label>
+                    <label>
+                      Phone number *
+                      <input name="phone" placeholder="+91 98765 43210" />
                       {errors.phone && <small>{errors.phone}</small>}
-                    </div>
+                    </label>
                   </div>
-                  <div className="formgroup">
-                    <label>Business Type</label>
-                    <select name="type">
-                      <option value="retail">Retail Shop / Counter POS</option>
-                      <option value="wholesale">Wholesale &amp; Distribution</option>
-                      <option value="services">Service Provider / Agency</option>
-                      <option value="manufacturing">Manufacturing / Assembly</option>
-                    </select>
+                  <div className="fields">
+                    <label>
+                      Business type *
+                      <select name="type" defaultValue="">
+                        <option value="" disabled>
+                          Select type
+                        </option>
+                        <option>Retail</option>
+                        <option>Wholesale / Distribution</option>
+                        <option>Other</option>
+                      </select>
+                      {errors.type && <small>{errors.type}</small>}
+                    </label>
+                    <label>
+                      Primary requirement *
+                      <select name="need" defaultValue="">
+                        <option value="" disabled>
+                          Select requirement
+                        </option>
+                        <option>Retail billing</option>
+                        <option>Quotations and invoices</option>
+                        <option>Inventory and purchasing</option>
+                        <option>Collections and reports</option>
+                        <option>General walkthrough</option>
+                      </select>
+                      {errors.need && <small>{errors.need}</small>}
+                    </label>
                   </div>
-                  <div className="formgroup">
-                    <label>Primary Operational Need</label>
-                    <textarea name="need" rows="2" placeholder="Tell us about your current billing, stock, or tax compliance challenges..." />
-                    {errors.need && <small>{errors.need}</small>}
-                  </div>
-                  <button className="btn" type="submit">
-                    Request Walkthrough <Icon name="arrow" size={18} />
-                  </button>
+                  <label>
+                    Additional message
+                    <textarea rows={3} placeholder="Share any workflow questions (optional)" />
+                  </label>
+                  <Btn type="submit">
+                    Validate demo request <Icon name="arrow" size={17} />
+                  </Btn>
+                  <small className="privacy">
+                    <Icon name="shield" size={13} />
+                    Prototype form—details are validated locally and our team will get in touch.
+                  </small>
                 </form>
               )}
             </div>
@@ -1193,37 +1349,47 @@ export default function LandingView() {
 
       {/* Footer */}
       <footer className="footer">
-        <div className="container footergrid">
+        <div className="container footgrid">
           <div>
-            <Logo logoUrl={logoUrl} />
+            <Logo />
             <p>
-              Smart billing, inventory tracking, GST compliance, and operations platform for growing businesses across India.
+              Business billing, inventory and operations software for retail, wholesale and growing
+              teams.
             </p>
           </div>
-          <div>
-            <b>Core Modules</b>
-            <a href="#modules">Dashboard &amp; KPI</a>
-            <a href="#modules">Sales &amp; POS Billing</a>
-            <a href="#modules">Purchases &amp; Vendors</a>
-            <a href="#modules">Real-Time Inventory</a>
-            <a href="#modules">GST &amp; Compliance</a>
-            <a href="#modules">Finance &amp; Balance Sheet</a>
-          </div>
-          <div>
-            <b>Free Public Tools</b>
-            <a href="/ledgerone/app/tools/quotation-maker">Free Quotation Maker</a>
-            <a href="/ledgerone/app/tools/invoice-generator">Free Invoice Generator</a>
-            <a href="#tools">Bulk Data Importer</a>
-            <a href="#faq">Frequently Asked Questions</a>
-          </div>
-          <div>
-            <b>OneAssist Technologies</b>
-            <p>Empowering commerce with intelligent business operating systems.</p>
-            <small>&copy; {new Date().getFullYear()} OneAssist Technologies. All rights reserved.</small>
-          </div>
+          <section>
+            <b>Explore</b>
+            <a href="#features">Features</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#mobile">Mobile App</a>
+          </section>
+          <section>
+            <b>Tools</b>
+            <button onClick={() => setBuilder('Quotation')} type="button">
+              Quotation Maker (Preview)
+            </button>
+            <a href="/ledgerone/app/tools/quotation-maker">Quotation Maker (Online)</a>
+            <button onClick={() => setBuilder('Invoice')} type="button">
+              Invoice Generator (Preview)
+            </button>
+            <a href="/ledgerone/app/tools/invoice-generator">Invoice Generator (Online)</a>
+          </section>
+          <section>
+            <b>Account &amp; Access</b>
+            <a href="/ledgerone/app/login">Login to Account</a>
+            <a href="/ledgerone/app/signup">Register Free</a>
+            <a href="#demo">Request a Demo</a>
+            <a href="https://oneassist.net.in/contact">Contact Support</a>
+          </section>
+        </div>
+        <div className="container copyright">
+          © {new Date().getFullYear()} OneAssist Technologies. All rights reserved.
+          <span>LedgerOne — connected business operations.</span>
         </div>
       </footer>
+
+      {/* Interactive In-Browser Document Builder Modal */}
+      {builder && <Builder kind={builder} close={() => setBuilder(null)} />}
     </div>
   );
 }
-
