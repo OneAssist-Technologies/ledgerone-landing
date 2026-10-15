@@ -64,9 +64,13 @@ export const metadata = {
     },
   },
   icons: {
-    icon: '/favicon.svg',
-    shortcut: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: [
+      { url: '/ledgerone/favicon.ico', sizes: 'any' },
+      { url: '/ledgerone/ledgerone.png', type: 'image/png' },
+      { url: '/ledgerone/ledgerone.jpg', type: 'image/jpeg' },
+    ],
+    shortcut: '/ledgerone/favicon.ico',
+    apple: '/ledgerone/ledgerone.png',
   },
 };
 
@@ -108,6 +112,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        <link rel="icon" href="/ledgerone/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" href="/ledgerone/ledgerone.png" />
+        <link rel="icon" type="image/jpeg" href="/ledgerone/ledgerone.jpg" />
+        <link rel="apple-touch-icon" href="/ledgerone/ledgerone.png" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

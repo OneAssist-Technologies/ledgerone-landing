@@ -53,6 +53,22 @@ const nextConfig = {
       ],
     };
   },
+  async redirects() {
+    return [
+      {
+        source: '/favicon.ico',
+        destination: '/ledgerone/favicon.ico',
+        permanent: false,
+        basePath: false,
+      },
+      {
+        source: '/favicon.svg',
+        destination: '/ledgerone/favicon.ico',
+        permanent: false,
+        basePath: false,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

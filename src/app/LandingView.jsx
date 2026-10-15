@@ -914,6 +914,15 @@ export default function LandingView() {
       'Manage retail POS billing, wholesale GST tax invoices, purchases, real-time inventory, GSTR-1/2B statutory compliance, and multi-bank BRS with LedgerOne.'
     );
 
+    // Ensure favicon is set
+    let icon = document.querySelector("link[rel*='icon']");
+    if (!icon) {
+      icon = document.createElement('link');
+      icon.rel = 'icon';
+      document.head.appendChild(icon);
+    }
+    icon.href = '/ledgerone/favicon.ico';
+
     // Detect active authenticated session from localStorage
     try {
       const token = localStorage.getItem('ledgerone_token');
