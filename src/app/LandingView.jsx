@@ -924,27 +924,31 @@ export default function LandingView() {
     icon.href = '/ledgerone/favicon.ico';
 
     // Detect active authenticated session from localStorage
-    try {
-      const token = localStorage.getItem('ledgerone_token');
-      const rawUser = localStorage.getItem('ledgerone_user');
-      if (token && rawUser) {
-        const parsed = JSON.parse(rawUser);
-        if (parsed) {
-          setCurrentUser(parsed);
-          const name =
-            parsed?.company?.slug ||
-            parsed?.company?.companyName ||
-            parsed?.companyName ||
-            (typeof parsed?.company === 'string' ? parsed.company : null);
-          const slug = name
-            ? String(name).trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '')
-            : 'company';
-          setCompanySlug(slug || 'company');
+    const timer = setTimeout(() => {
+      try {
+        const token = localStorage.getItem('ledgerone_token');
+        const rawUser = localStorage.getItem('ledgerone_user');
+        if (token && rawUser) {
+          const parsed = JSON.parse(rawUser);
+          if (parsed) {
+            setCurrentUser(parsed);
+            const name =
+              parsed?.company?.slug ||
+              parsed?.company?.companyName ||
+              parsed?.companyName ||
+              (typeof parsed?.company === 'string' ? parsed.company : null);
+            const slug = name
+              ? String(name).trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '')
+              : 'company';
+            setCompanySlug(slug || 'company');
+          }
         }
+      } catch {
+        // ignore parsing error
       }
-    } catch {
-      // ignore parsing error
-    }
+    }, 0);
+
+    return () => clearTimeout(timer);
   }, []);
 
   function submit(e) {
