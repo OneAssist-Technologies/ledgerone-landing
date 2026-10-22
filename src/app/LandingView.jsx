@@ -750,154 +750,11 @@ function Phone({ large = false }) {
   );
 }
 
-function Builder({ kind, close }) {
-  const [business, setBusiness] = useState('Your Business');
-  const [customer, setCustomer] = useState('Customer Name');
-  const [item, setItem] = useState('Product or service');
-  const [qty, setQty] = useState(1);
-  const [price, setPrice] = useState(1000);
-  const [tax, setTax] = useState(0);
-
-  const subtotal = Math.max(0, qty) * Math.max(0, price);
-  const taxTotal = (subtotal * Math.max(0, tax)) / 100;
-  const total = subtotal + taxTotal;
-
-  return (
-    <div className="backdrop" onMouseDown={close}>
-      <div
-        className="builder"
-        role="dialog"
-        aria-modal="true"
-        onMouseDown={(e) => e.stopPropagation()}
-      >
-        <header>
-          <span>
-            <small>CLIENT-SIDE PREVIEW</small>
-            <h2>{kind} Builder</h2>
-          </span>
-          <button onClick={close} aria-label="Close" type="button">
-            <Icon name="close" />
-          </button>
-        </header>
-        <div className="buildergrid">
-          <form onSubmit={(e) => e.preventDefault()}>
-            <label>
-              Business name
-              <input value={business} onChange={(e) => setBusiness(e.target.value)} />
-            </label>
-            <label>
-              Customer name
-              <input value={customer} onChange={(e) => setCustomer(e.target.value)} />
-            </label>
-            <label>
-              Item description
-              <input value={item} onChange={(e) => setItem(e.target.value)} />
-            </label>
-            <div className="fields">
-              <label>
-                Quantity
-                <input
-                  type="number"
-                  min="0"
-                  value={qty}
-                  onChange={(e) => setQty(+e.target.value)}
-                />
-              </label>
-              <label>
-                Unit price (₹)
-                <input
-                  type="number"
-                  min="0"
-                  value={price}
-                  onChange={(e) => setPrice(+e.target.value)}
-                />
-              </label>
-              <label>
-                Tax rate (%)
-                <input
-                  type="number"
-                  min="0"
-                  value={tax}
-                  onChange={(e) => setTax(+e.target.value)}
-                />
-              </label>
-            </div>
-            <p>
-              <Icon name="shield" size={16} /> This preview does not post transactions, alter stock or
-              connect to a company workspace.
-            </p>
-          </form>
-          <article className="document">
-            <header>
-              <span>
-                <img src="/ledgerone/ledgerone-logo.jpg" alt="" />
-                <b>{business || 'Your Business'}</b>
-              </span>
-              <strong>{kind.toUpperCase()}</strong>
-            </header>
-            <div className="docmeta">
-              <span>
-                PREPARED FOR<b>{customer || 'Customer Name'}</b>
-              </span>
-              <span>
-                {kind.toUpperCase()} NO.<b>{kind === 'Invoice' ? 'INV-001' : 'QTN-001'}</b>
-              </span>
-            </div>
-            <div className="docline head">
-              <span>Description</span>
-              <span>Qty</span>
-              <span>Rate</span>
-              <span>Amount</span>
-            </div>
-            <div className="docline">
-              <span>{item}</span>
-              <span>{qty}</span>
-              <span>₹{price.toLocaleString('en-IN')}</span>
-              <span>₹{subtotal.toLocaleString('en-IN')}</span>
-            </div>
-            <div className="totals">
-              <p>
-                Subtotal <b>₹{subtotal.toLocaleString('en-IN')}</b>
-              </p>
-              <p>
-                Tax ({tax}%) <b>₹{taxTotal.toLocaleString('en-IN')}</b>
-              </p>
-              <p>
-                Grand total <strong>₹{total.toLocaleString('en-IN')}</strong>
-              </p>
-            </div>
-            <small>Illustrative document preview</small>
-          </article>
-        </div>
-        <footer>
-          <Btn kind="outline" onClick={() => window.print()}>
-            Print / save as PDF
-          </Btn>
-          <Btn
-            onClick={() => {
-              setBusiness('Your Business');
-              setCustomer('Customer Name');
-              setItem('Product or service');
-              setQty(1);
-              setPrice(1000);
-              setTax(0);
-            }}
-          >
-            <Icon name="refresh" size={17} />
-            Start new
-          </Btn>
-        </footer>
-      </div>
-    </div>
-  );
-}
-
 export default function LandingView() {
   const [menu, setMenu] = useState(false);
   const [feature, setFeature] = useState('Sales & Billing');
   const [preview, setPreview] = useState('Dashboard');
   const [faq, setFaq] = useState(0);
-  const [builder, setBuilder] = useState(null);
   const [sent, setSent] = useState(false);
   const [errors, setErrors] = useState({});
   const [currentUser, setCurrentUser] = useState(null);
@@ -1117,7 +974,7 @@ export default function LandingView() {
             <Title
               eyebrow="PRACTICAL BUSINESS TOOLS"
               title="Create Business Documents in Minutes"
-              text="Prepare professional quotations and invoices using LedgerOne’s available document-generation preview tools."
+              text="Prepare professional quotations and invoices using LedgerOne’s integrated document generation tools."
             />
             <div className="toolgrid">
               {[
@@ -1126,12 +983,14 @@ export default function LandingView() {
                   'Quotation Maker',
                   'Prepare itemised quotations with customer details, product quantities, pricing, applicable tax details and commercial terms.',
                   'document',
+                  '/ledgerone/tools/quotation-maker',
                 ],
                 [
                   'Invoice',
                   'Invoice Generator',
                   'Create a clear professional invoice preview with itemised document details and consistent totals.',
                   'receipt',
+                  '/ledgerone/tools/invoice-generator',
                 ],
               ].map((x, i) => (
                 <article className="toolcard" key={x[0]}>
@@ -1141,12 +1000,11 @@ export default function LandingView() {
                   <small>0{i + 1}</small>
                   <h3>{x[1]}</h3>
                   <p>{x[2]}</p>
-                  <button
-                    onClick={() => setBuilder(x[0])}
-                    type="button"
+                  <a
+                    href={x[4]}
                   >
-                    {i ? 'Generate an Invoice' : 'Create a Quotation'} <Icon name="arrow" size={18} />
-                  </button>
+                    {i ? 'Open Invoice Generator' : 'Open Quotation Maker'} <Icon name="arrow" size={18} />
+                  </a>
                   <div className="minipaper">
                     <b>{x[0].toUpperCase()}</b>
                     <span />
@@ -1159,7 +1017,7 @@ export default function LandingView() {
             </div>
             <p className="honest">
               <Icon name="shield" size={16} />
-              Previews run locally in your browser. Register an account to save records permanently and track customer payments.
+              Open the full LedgerOne tools to generate and download professional quotations and invoices directly.
             </p>
           </div>
         </section>
@@ -1689,14 +1547,8 @@ export default function LandingView() {
           </section>
           <section>
             <b>Tools</b>
-            <button onClick={() => setBuilder('Quotation')} type="button">
-              Quotation Maker (Preview)
-            </button>
-            <a href="/ledgerone/tools/quotation-maker">Quotation Maker (Online)</a>
-            <button onClick={() => setBuilder('Invoice')} type="button">
-              Invoice Generator (Preview)
-            </button>
-            <a href="/ledgerone/tools/invoice-generator">Invoice Generator (Online)</a>
+            <a href="/ledgerone/tools/quotation-maker">Quotation Maker</a>
+            <a href="/ledgerone/tools/invoice-generator">Invoice Generator</a>
           </section>
           <section>
             <b>Account &amp; Access</b>
@@ -1743,9 +1595,6 @@ export default function LandingView() {
           <span>LedgerOne — connected business operations.</span>
         </div>
       </footer>
-
-      {/* Interactive In-Browser Document Builder Modal */}
-      {builder && <Builder kind={builder} close={() => setBuilder(null)} />}
     </div>
   );
 }

@@ -806,9 +806,10 @@ textarea:focus-visible {
   font-size: 13px;
   line-height: 1.65;
 }
-.toolcard > button {
+.toolcard > button,
+.toolcard > a {
   padding: 0;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 7px;
   border: 0;
@@ -817,6 +818,10 @@ textarea:focus-visible {
   font-size: 13px;
   font-weight: 700;
   cursor: pointer;
+  text-decoration: none;
+}
+.toolcard > a:hover {
+  text-decoration: underline;
 }
 .minipaper {
   width: 140px;
