@@ -1,0 +1,67 @@
+
+name: Deploy LedgerOne Landing Page
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: ledgerone-landing-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Deploy to LedgerOne VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy application
+        uses: appleboy/ssh-action@v1.2.2
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          port: 22
+          command_timeout: 15m
+          script: |
+            set -eu
+
+            cd /var/www/ledgerone-landing
+
+            echo "Fetching latest main branch..."
+            git fetch origin main
+
+            if [ -n "$(git status --porcelain)" ]; then
+              echo "Working tree is not clean. Deployment stopped."
+              git status --short
+              exit 1
+            fi
+
+            if ! git merge-base --is-ancestor HEAD origin/main; then
+              echo "Local branch differs from GitHub main."
+              echo "Deployment stopped to prevent losing commits."
+              exit 1
+            fi
+
+            echo "Updating code..."
+            git reset --hard origin/main
+
+            echo "Installing dependencies..."
+            npm ci
+
+            echo "Building Next.js application..."
+            npm run build
+
+            echo "Restarting landing page only..."
+            pm2 restart ledgerone-landing
+            pm2 save
+
+            echo "Checking live URL..."
+            curl --fail --silent --show-error \
+              --retry 5 --retry-delay 3 \
+              https://oneassist.net.in/ledgerone/ \
+              -o /dev/null
+
+            echo "Deployment completed successfully."
