@@ -1,11 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   basePath: '/ledgerone',
-  trailingSlash: false,
+  trailingSlash: true,
   // Proxy local development requests to the React App and Express Backend
   async rewrites() {
     return {
       beforeFiles: [
+        // Forward LedgerOne assets through the configured basePath
+        {
+          source: '/assets/:path*',
+          destination: 'http://127.0.0.1:4175/assets/:path*',
+        },
         // Express Backend APIs (both with and without basePath)
         {
           source: '/ledgeroneapi/:path*',
@@ -28,17 +33,17 @@ const nextConfig = {
         // Legacy /app/:path* requests seamlessly proxy to Vite
         {
           source: '/app/:path*',
-          destination: 'http://localhost:3005/ledgerone/:path*',
+          destination: 'http://127.0.0.1:4175/ledgerone/:path*',
         },
         // Vite HMR and dev client roots if requested without /ledgerone prefix
         {
           source: '/@vite/:path*',
-          destination: 'http://localhost:3005/@vite/:path*',
+          destination: 'http://127.0.0.1:4175/@vite/:path*',
           basePath: false,
         },
         {
           source: '/@fs/:path*',
-          destination: 'http://localhost:3005/@fs/:path*',
+          destination: 'http://127.0.0.1:4175/@fs/:path*',
           basePath: false,
         },
       ],
@@ -48,7 +53,7 @@ const nextConfig = {
       fallback: [
         {
           source: '/:path*',
-          destination: 'http://localhost:3005/ledgerone/:path*',
+          destination: 'http://127.0.0.1:4175/ledgerone/:path*',
         },
       ],
     };
